@@ -6,6 +6,7 @@
     <title>Solution Lab | Radko Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    html { scroll-behavior: smooth;}
     
     <style>
         /* 1. 全域設定 */
@@ -29,12 +30,12 @@
             opacity: 0.6;
             transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-        .blob-yellow { width: 800px; height: 800px; background: #FACC15; top: -20%; left: 10%; }
+        .blob-yellow { width: 800px; height: 800px; background: #e2bb0e; top: -20%; left: 10%; }
         .blob-red {
     /* 1. 尺寸設定 */
-    width: 1100px;
-    height: 1100px;
-    background: #EF4444;
+    width: 800px;
+    height: 800px;
+    background: #b13c3c;
 
     /* 2. 絕對居中神技 (不會被 JS 影響) */
     position: absolute;
@@ -48,7 +49,7 @@
 
     /* 注意：這裡完全不需要寫 transform 或 margin-left 負值了 */
 }
-        .blob-green { width: 800px; height: 800px; background: #4ADE80; top: -20%; right: 10%; }
+        .blob-green { width: 800px; height: 800px; background: #39ac63; top: -20%; right: 10%; }
 
         /* 3. 滾動現身特效 (Scroll Reveal) */
         .reveal {
@@ -112,8 +113,10 @@
 
         <div class="reveal" style="transition-delay: 0.1s;">
             <p class="max-w-xl mx-auto text-gray-600 text-base md:text-lg leading-relaxed mb-10 font-medium bg-white/30 backdrop-blur-sm p-4 rounded-xl border border-white/20">
-                從問題到實踐的解決方案基地。<br>
-                結合 <span class="text-black font-semibold">設計思維</span> 與 <span class="text-black font-semibold">專案管理</span>，<br>將複雜挑戰轉化為落地價值。
+                這是我實踐「設計思考（Design Thinking）」的場域。
+以設計視角洞察需求，並執行方案。
+最好的解決方案是在「使用者體驗」與「開發可行性」之間找到完美的平衡點。
+                
             </p>
         </div>
 
