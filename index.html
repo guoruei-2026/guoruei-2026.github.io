@@ -9,119 +9,60 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     
-/* --- 新增的特效 CSS (請貼在 </style> 之前) --- */
-
-/* 1. Solution Lab 文字呼吸燈特效 (淡入淡出) */
-@keyframes breathe {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; } /* 變淡至 30% */
-}
-.animate-breathe {
-    animation: breathe 4s ease-in-out infinite; /* 4秒循環一次 */
-}
-
-/* 2. 加號 (+) 的光圈擴散特效 */
-@keyframes ripple {
-    0% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); /* 光圈擴大並消失 */
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    }
-}
-.plus-effect {
-    border-radius: 50%;
-    animation: ripple 2s infinite; /* 2秒波動一次 */
-    width: 80px;  /* 設定寬高確保光圈是圓的 */
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto; /* 置中 */
-}
-
-/* 3. 底部選單 Tooltip (解釋文字) */
-.tooltip-box {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-}
-/* 當滑鼠移到父層 (.group) 時，顯示 Tooltip */
-.group:hover .tooltip-box {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
     <style>
         /* ====================
            全域與基礎設定
            ==================== */
         
-        /* 讓點擊選單跳轉時，畫面會「滑」下去，而不是瞬間跳轉 */
         html {
             scroll-behavior: smooth;
         }
 
         body { 
-            font-family: 'Inter', sans-serif; /* 設定預設字體 */
-            background-color: #FDFCF8; /* 設定米白色背景 */
-            cursor: default; /* 設定滑鼠游標樣式 */
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFCF8;
+            cursor: default;
         }
         
-        /* 針對標題設定特殊的襯線字體，看起來比較優雅 */
         h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
 
         /* ====================
            背景彌散光暈特效 (Blobs)
            ==================== */
         
-        /* 這是裝光球的容器 */
         .blob-cont {
-            position: fixed; /* 固定定位：讓背景永遠鎖定在視窗，不隨捲動跑掉 */
+            position: fixed;
             top: 0; left: 0; width: 100%; height: 100vh;
-            z-index: -1; /* 設為 -1：確保它永遠在內容的「後面」 */
-            overflow: hidden; /* 超出螢幕的部分隱藏 */
-            pointer-events: none; /* 讓滑鼠可以直接穿透背景，點擊到上面的內容 */
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
         }
         
-        /* 光球的共同設定 */
         .blob {
-            position: absolute; /* 絕對定位：讓它可以自由飛翔 */
-            border-radius: 50%; /* 變成圓形 */
-            filter: blur(120px); /* 高斯模糊：數字越大，邊緣越暈開 */
-            opacity: 0.7; /* 透明度：半透明才能疊加出漂亮的顏色 */
-            /* 設定動畫過渡效果，讓滑鼠移動時，球的跟隨比較平滑 */
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.7;
             transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        /* 黃色光球 (左邊) */
         .blob-yellow { 
             width: 900px; height: 900px; 
             background: #ffcc00; 
             top: -30%; left: -10%; 
         }
 
-        /* 紅色光球 (中間) - 這是我們修正過不會跑掉的版本 */
         .blob-red { 
             width: 1100px; height: 1100px; 
             background: #c72020; 
-            
-            /* 【關鍵技術】絕對居中法 */
             position: absolute;
             left: 0;
             right: 0;
-            margin-left: auto; /* 左右 auto 會讓瀏覽器自動把它夾在中間 */
+            margin-left: auto;
             margin-right: auto;
-            
             top: -40%; 
         }
 
-        /* 綠色光球 (右邊) */
         .blob-green { 
             width: 900px; height: 900px; 
             background: #01da37; 
@@ -129,40 +70,80 @@
         }
 
         /* ====================
-           互動特效區
+           互動特效區 (原本的)
            ==================== */
 
-        /* 滾動現身特效 (Scroll Reveal) */
         .reveal {
-            opacity: 0; /* 預設隱藏 */
-            transform: translateY(30px); /* 預設位置比較下面 */
-            transition: all 1s cubic-bezier(0.5, 0, 0, 1); /* 動畫時間 1秒 */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
         }
-        /* 當 JS 加上這個 class 時，元素就會浮現 */
         .reveal.active {
             opacity: 1;
-            transform: translateY(0); /* 回到正常位置 */
+            transform: translateY(0);
         }
 
-        /* 十字旋轉動畫 */
         .cross-icon {
-            transition: transform 0.1s linear; /* 設定旋轉時的順暢度 */
+            transition: transform 0.1s linear;
         }
 
-        /* 作品卡片懸停特效 */
         .project-card img {
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .project-card:hover img {
-            transform: scale(1.05); /* 滑鼠移上去時，圖片放大 1.05 倍 */
+            transform: scale(1.05);
         }
         .project-card .overlay {
-            opacity: 0; /* 遮罩預設是透明的 */
+            opacity: 0;
             transition: opacity 0.3s ease;
         }
         .project-card:hover .overlay {
-            opacity: 1; /* 滑鼠移上去時，遮罩顯示 */
+            opacity: 1;
         }
+
+        /* ====================
+           🔥 新增的特效區 (呼吸、光圈、Tooltip)
+           ==================== */
+
+        /* 1. 標題呼吸燈特效 */
+        @keyframes breathe {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .animate-breathe {
+            animation: breathe 4s ease-in-out infinite;
+        }
+
+        /* 2. 加號光圈特效 */
+        @keyframes ripple {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+        .plus-effect {
+            border-radius: 50%;
+            animation: ripple 2s infinite;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        /* 3. Tooltip 樣式 */
+        .tooltip-box {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .group:hover .tooltip-box {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
     </style>
 </head>
 
@@ -170,7 +151,8 @@
 
     <div class="blob-cont">
         <div class="blob blob-yellow" data-speed="2"></div>
-        <div class="blob blob-red" data-speed="0.2"></div> <div class="blob blob-green" data-speed="1.5"></div>
+        <div class="blob blob-red" data-speed="0.2"></div> 
+        <div class="blob blob-green" data-speed="1.5"></div>
     </div>
 
     <nav class="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md border-b border-white/20 transition-all duration-300">
@@ -184,7 +166,7 @@
         </div>
     </nav>
 
-   <header class="relative z-10 text-center pt-20 pb-32 px-4 min-h-[80vh] flex flex-col justify-center">
+    <header class="relative z-10 text-center pt-20 pb-32 px-4 min-h-[80vh] flex flex-col justify-center">
         
         <div class="mb-8 flex justify-center">
             <div class="plus-effect">
@@ -198,14 +180,14 @@
             </h1>
         </div>
 
-        <div class="reveal" style="transition-delay: 0.1s;">
-            <p class="max-w-xl mx-auto text-gray-600 text-base md:text-lg leading-relaxed mb-10 font-medium bg-white/30 backdrop-blur-sm p-4 rounded-xl border border-white/20">
-                從問題到實踐的解決方案基地。<br>
-                結合 <span class="text-black font-semibold">設計思維</span> 與 <span class="text-black font-semibold">專案管理</span>，<br>將複雜挑戰轉化為落地價值。
+        <div class="reveal" style="transition-delay: 0.1s;"> 
+            <p class="text-white antialiased max-w-xl mx-auto leading-relaxed">
+                這是我實踐「設計思考（Design Thinking）」的場域。以設計視角洞察需求並執行方案。<br>
+                這裡將在「使用者體驗」與「開發可行性」之間找到完美的平衡點。
             </p>
         </div>
 
-        <div class="reveal flex justify-center gap-8 md:gap-16 text-xs font-bold tracking-widest uppercase w-full max-w-4xl mx-auto pt-4" style="transition-delay: 0.2s;">
+        <div class="reveal flex justify-center gap-8 md:gap-16 text-xs font-bold tracking-widest uppercase w-full max-w-4xl mx-auto pt-16" style="transition-delay: 0.2s;">
             
             <div class="group relative cursor-pointer flex flex-col items-center">
                 <span class="border-b border-black pb-1 hover:text-red-600 transition">Integrated Design</span>
@@ -222,7 +204,7 @@
             </div>
 
             <div class="group relative cursor-pointer flex flex-col items-center">
-                <span class="border-b border-black pb-1 hover:text-green-600 transition">AI Co-Creation</span>
+                <span class="border-b border-black pb-1 hover:text-green-600 transition">AI Co-creation</span>
                 <div class="tooltip-box absolute top-full mt-4 w-48 bg-black/80 backdrop-blur text-white text-[10px] font-normal p-3 rounded leading-relaxed normal-case">
                     運用 AI 工具協作，加速創意發想與原型製作的效率。
                 </div>
@@ -373,41 +355,31 @@
 
     <script>
         // 1. Scroll Reveal (滾動出現特效)
-        // 抓取所有這有 class="reveal" 的元素
         const revealElements = document.querySelectorAll('.reveal');
         
         const revealOnScroll = () => {
-            const windowHeight = window.innerHeight; // 視窗高度
-            const elementVisible = 100; // 元素進入視窗多少 pixel 後才顯示
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
 
             revealElements.forEach((reveal) => {
-                const elementTop = reveal.getBoundingClientRect().top; // 元素距離頂部的距離
-                
-                // 如果元素進入了視線範圍
+                const elementTop = reveal.getBoundingClientRect().top;
                 if (elementTop < windowHeight - elementVisible) {
-                    reveal.classList.add('active'); // 加上 active，CSS 就會讓它浮現
+                    reveal.classList.add('active');
                 }
             });
         };
-        // 監聽滾動事件
         window.addEventListener('scroll', revealOnScroll);
-        // 一載入頁面先執行一次，確保第一畫面的東西會顯示
         revealOnScroll();
 
         // 2. Mouse Parallax (背景滑鼠跟隨特效)
         document.addEventListener('mousemove', (e) => {
-            // 抓取所有光球
             const blobs = document.querySelectorAll('.blob');
             
             blobs.forEach(blob => {
-                // 讀取我們在 HTML 設定的 data-speed
                 const speed = blob.getAttribute('data-speed');
-                
-                // 計算偏移量 (除以 20 是為了減緩移動幅度，不要動太快)
                 const xOffset = (window.innerWidth - e.clientX * speed) / 20;
                 const yOffset = (window.innerHeight - e.clientY * speed) / 20;
 
-                // 使用 CSS transform 來移動它
                 blob.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
             });
         });
@@ -415,8 +387,7 @@
         // 3. Rotating Cross (十字隨滾動旋轉)
         const cross = document.getElementById('rotating-cross');
         window.addEventListener('scroll', () => {
-            const scrollPos = window.scrollY; // 取得目前滾動了多少距離
-            // 根據滾動距離來決定旋轉角度 (0.2 是旋轉速度係數)
+            const scrollPos = window.scrollY;
             cross.style.transform = `rotate(${scrollPos * 0.2}deg)`;
         });
     </script>
