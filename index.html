@@ -6,10 +6,14 @@
     <title>Solution Lab | Radko Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-    html { scroll-behavior: smooth;}
     
     <style>
-        /* 1. 全域設定 */
+        /* 1. 【新增】這行讓點擊選單時變成平滑滑動 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 2. 全域設定 */
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: #FDFCF8;
@@ -17,7 +21,7 @@
         }
         h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
 
-        /* 2. 背景光暈 (優化版：支援 JS 控制) */
+        /* 3. 背景光暈設定 */
         .blob-cont {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100vh;
@@ -26,32 +30,42 @@
         .blob {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.6;
+            filter: blur(120px); /* 加大模糊 */
+            opacity: 0.5; 
             transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-        .blob-yellow { width: 800px; height: 800px; background: #e2bb0e; top: -20%; left: 10%; }
-        .blob-red {
-    /* 1. 尺寸設定 */
-    width: 800px;
-    height: 800px;
-    background: #b13c3c;
 
-    /* 2. 絕對居中神技 (不會被 JS 影響) */
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
+        /* 黃色光暈 */
+        .blob-yellow { 
+            width: 900px; height: 900px; 
+            background: #FACC15; 
+            top: -30%; left: -10%; 
+        }
 
-    /* 3. 上下位置微調 */
-    top: -40%;
+        /* 【修正】紅色光暈 (絕對居中版) */
+        .blob-red { 
+            width: 1100px; height: 1100px; 
+            background: #EF4444; 
+            
+            /* 這裡是用來強制居中的關鍵 */
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            
+            top: -40%; 
+            /* 移除原本的 transform: translateX(-50%)，避免跟 JS 打架 */
+        }
 
-    /* 注意：這裡完全不需要寫 transform 或 margin-left 負值了 */
-}
-        .blob-green { width: 800px; height: 800px; background: #39ac63; top: -20%; right: 10%; }
+        /* 綠色光暈 */
+        .blob-green { 
+            width: 900px; height: 900px; 
+            background: #4ADE80; 
+            top: -30%; right: -10%; 
+        }
 
-        /* 3. 滾動現身特效 (Scroll Reveal) */
+        /* 4. 滾動現身特效 */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -62,12 +76,12 @@
             transform: translateY(0);
         }
 
-        /* 4. 十字旋轉動畫 */
+        /* 5. 十字旋轉動畫 */
         .cross-icon {
             transition: transform 0.1s linear;
         }
 
-        /* 5. 圖片懸停優化 */
+        /* 6. 圖片懸停優化 */
         .project-card img {
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
@@ -83,9 +97,11 @@
         }
     </style>
 </head>
-<body class="bg-[#FDFCF8] text-gray-800 antialiased overflow-x-hidden selection:bg-red-200 selection:text-red-900 pt-20"> <div class="blob-cont" id="blob-container">
+<body class="bg-[#FDFCF8] text-gray-800 antialiased overflow-x-hidden pt-20">
+
+    <div class="blob-cont">
         <div class="blob blob-yellow" data-speed="2"></div>
-        <div class="blob blob-red" data-speed="-0.2"></div>
+        <div class="blob blob-red" data-speed="0.2"></div> 
         <div class="blob blob-green" data-speed="1.5"></div>
     </div>
 
@@ -113,10 +129,8 @@
 
         <div class="reveal" style="transition-delay: 0.1s;">
             <p class="max-w-xl mx-auto text-gray-600 text-base md:text-lg leading-relaxed mb-10 font-medium bg-white/30 backdrop-blur-sm p-4 rounded-xl border border-white/20">
-                這是我實踐「設計思考（Design Thinking）」的場域。
-以設計視角洞察需求，並執行方案。
-最好的解決方案是在「使用者體驗」與「開發可行性」之間找到完美的平衡點。
-                
+                從問題到實踐的解決方案基地。<br>
+                結合 <span class="text-black font-semibold">設計思維</span> 與 <span class="text-black font-semibold">專案管理</span>，<br>將複雜挑戰轉化為落地價值。
             </p>
         </div>
 
@@ -127,7 +141,8 @@
         </div>
     </header>
 
-    <section id="about" class="max-w-6xl mx-auto px-6 py-24 relative z-10 scroll-mt-20"> <div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+    <section id="about" class="max-w-6xl mx-auto px-6 py-24 relative z-10 scroll-mt-28">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
             <div class="md:col-span-5 relative reveal">
                 <div class="relative rounded-t-[10rem] rounded-b-[2rem] overflow-hidden bg-gradient-to-b from-red-100 to-white shadow-2xl aspect-[3/4] group cursor-none">
                     <img src="https://via.placeholder.com/400x600?text=Radko" alt="Radko" class="object-cover w-full h-full mix-blend-multiply opacity-90 group-hover:scale-105 transition duration-700">
@@ -166,7 +181,7 @@
         </div>
     </section>
 
-    <section id="research" class="max-w-6xl mx-auto px-6 py-24 border-t border-gray-100 scroll-mt-20">
+    <section id="research" class="max-w-6xl mx-auto px-6 py-24 border-t border-gray-100 scroll-mt-28">
         <h2 class="text-center text-3xl font-bold serif mb-16 reveal">Academic Research</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
             <div class="bg-gray-50 aspect-video flex items-center justify-center border border-gray-200 relative reveal group overflow-hidden">
@@ -201,7 +216,7 @@
         </div>
     </section>
 
-    <section id="projects" class="bg-[#1a1a1a] text-white py-32 px-6 relative z-10 rounded-t-[3rem] mt-12 scroll-mt-20">
+    <section id="projects" class="bg-[#1a1a1a] text-white py-32 px-6 relative z-10 rounded-t-[3rem] mt-12 scroll-mt-28">
         <div class="text-center mb-20 reveal">
             <h2 class="text-4xl md:text-6xl serif mb-4">The Solution is...</h2>
             <p class="text-gray-400 text-sm tracking-widest uppercase">Select a Dimension</p>
@@ -267,7 +282,7 @@
     </footer>
 
     <script>
-        // ... (保持原有的 JS 程式碼不變)
+        // 1. Scroll Reveal (滾動出現特效)
         const revealElements = document.querySelectorAll('.reveal');
         
         const revealOnScroll = () => {
@@ -284,13 +299,14 @@
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
 
+        // 2. Mouse Parallax (背景滑鼠跟隨)
         document.addEventListener('mousemove', (e) => {
             const blobs = document.querySelectorAll('.blob');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-
+            // 下面這行註解掉，因為 CSS 已經有 left/right auto 了，不需要擔心偏移
             blobs.forEach(blob => {
                 const speed = blob.getAttribute('data-speed');
+                
+                // 計算偏移量 (讓它只在原本的位置附近微調)
                 const xOffset = (window.innerWidth - e.clientX * speed) / 20;
                 const yOffset = (window.innerHeight - e.clientY * speed) / 20;
 
@@ -298,6 +314,7 @@
             });
         });
 
+        // 3. Rotating Cross (十字旋轉)
         const cross = document.getElementById('rotating-cross');
         window.addEventListener('scroll', () => {
             const scrollPos = window.scrollY;
