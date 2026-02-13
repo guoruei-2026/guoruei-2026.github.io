@@ -9,6 +9,54 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     
+/* --- 新增的特效 CSS (請貼在 </style> 之前) --- */
+
+/* 1. Solution Lab 文字呼吸燈特效 (淡入淡出) */
+@keyframes breathe {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; } /* 變淡至 30% */
+}
+.animate-breathe {
+    animation: breathe 4s ease-in-out infinite; /* 4秒循環一次 */
+}
+
+/* 2. 加號 (+) 的光圈擴散特效 */
+@keyframes ripple {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); /* 光圈擴大並消失 */
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+.plus-effect {
+    border-radius: 50%;
+    animation: ripple 2s infinite; /* 2秒波動一次 */
+    width: 80px;  /* 設定寬高確保光圈是圓的 */
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto; /* 置中 */
+}
+
+/* 3. 底部選單 Tooltip (解釋文字) */
+.tooltip-box {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+/* 當滑鼠移到父層 (.group) 時，顯示 Tooltip */
+.group:hover .tooltip-box {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
     <style>
         /* ====================
            全域與基礎設定
@@ -46,7 +94,7 @@
             position: absolute; /* 絕對定位：讓它可以自由飛翔 */
             border-radius: 50%; /* 變成圓形 */
             filter: blur(120px); /* 高斯模糊：數字越大，邊緣越暈開 */
-            opacity: 0.5; /* 透明度：半透明才能疊加出漂亮的顏色 */
+            opacity: 0.7; /* 透明度：半透明才能疊加出漂亮的顏色 */
             /* 設定動畫過渡效果，讓滑鼠移動時，球的跟隨比較平滑 */
             transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
@@ -136,28 +184,50 @@
         </div>
     </nav>
 
-    <header class="relative z-10 text-center pt-20 pb-32 px-4 min-h-[80vh] flex flex-col justify-center">
+   <header class="relative z-10 text-center pt-20 pb-32 px-4 min-h-[80vh] flex flex-col justify-center">
+        
         <div class="mb-8 flex justify-center">
-            <span id="rotating-cross" class="cross-icon text-white text-5xl font-light opacity-80 inline-block">+</span> 
+            <div class="plus-effect">
+                <span id="rotating-cross" class="cross-icon text-white text-5xl font-light inline-block">+</span> 
+            </div>
         </div>
         
         <div class="reveal">
-            <h1 class="text-6xl md:text-8xl font-bold text-white mb-6 tracking-wide drop-shadow-sm leading-tight">
+            <h1 class="animate-breathe text-6xl md:text-8xl font-bold text-white mb-6 tracking-wide drop-shadow-sm leading-tight">
                 Solution Lab
             </h1>
         </div>
 
-  <div class="reveal" style="transition-delay: 0.1s;"> 
-    <p class="text-white antialiased">
-        這是我實踐「設計思考（Design Thinking）」的場域。以設計視角洞察需求並執行方案。<br>
-        這裡將在「使用者體驗」與「開發可行性」之間找到完美的平衡點。
-    </p>
-</div>
+        <div class="reveal" style="transition-delay: 0.1s;">
+            <p class="max-w-xl mx-auto text-gray-600 text-base md:text-lg leading-relaxed mb-10 font-medium bg-white/30 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+                從問題到實踐的解決方案基地。<br>
+                結合 <span class="text-black font-semibold">設計思維</span> 與 <span class="text-black font-semibold">專案管理</span>，<br>將複雜挑戰轉化為落地價值。
+            </p>
+        </div>
 
-        <div class="reveal mt-12 flex justify-center gap-4 md:gap-8 text-xs font-bold tracking-widest uppercase w-max mx-auto pt-50" style="transition-delay: 0.2s;">
-            <span class="border-b border-black pb-1">Integrated Design</span>
-            <span class="border-b border-black pb-1">User Research</span>
-            <span class="border-b border-black pb-1">AI Co-creation</span>
+        <div class="reveal flex justify-center gap-8 md:gap-16 text-xs font-bold tracking-widest uppercase w-full max-w-4xl mx-auto pt-4" style="transition-delay: 0.2s;">
+            
+            <div class="group relative cursor-pointer flex flex-col items-center">
+                <span class="border-b border-black pb-1 hover:text-red-600 transition">Integrated Design</span>
+                <div class="tooltip-box absolute top-full mt-4 w-48 bg-black/80 backdrop-blur text-white text-[10px] font-normal p-3 rounded leading-relaxed normal-case">
+                    整合視覺、互動與體驗設計，提供全方位的解決方案。
+                </div>
+            </div>
+
+            <div class="group relative cursor-pointer flex flex-col items-center">
+                <span class="border-b border-black pb-1 hover:text-yellow-600 transition">User Research</span>
+                <div class="tooltip-box absolute top-full mt-4 w-48 bg-black/80 backdrop-blur text-white text-[10px] font-normal p-3 rounded leading-relaxed normal-case">
+                    透過訪談與數據分析，挖掘使用者深層的潛在需求。
+                </div>
+            </div>
+
+            <div class="group relative cursor-pointer flex flex-col items-center">
+                <span class="border-b border-black pb-1 hover:text-green-600 transition">AI Co-Creation</span>
+                <div class="tooltip-box absolute top-full mt-4 w-48 bg-black/80 backdrop-blur text-white text-[10px] font-normal p-3 rounded leading-relaxed normal-case">
+                    運用 AI 工具協作，加速創意發想與原型製作的效率。
+                </div>
+            </div>
+
         </div>
     </header>
 
