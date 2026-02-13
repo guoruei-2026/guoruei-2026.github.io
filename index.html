@@ -1,152 +1,293 @@
-:root {
-    --bg-color: #f5f3ef;
-    --text-color: #333;
-    --accent-red: #ff4d4d;
-}
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solution Lab | Radko Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. 全域設定 */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #FDFCF8;
+            cursor: default;
+        }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', -apple-system, sans-serif;
-}
+        /* 2. 背景光暈 (優化版：支援 JS 控制) */
+        .blob-cont {
+            position: fixed; /* 改為 fixed，讓光暈永遠跟隨視窗 */
+            top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -1; overflow: hidden; pointer-events: none;
+        }
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); /* 平滑跟隨 */
+        }
+        /* 初始位置 */
+        .blob-yellow { width: 500px; height: 500px; background: #FACC15; top: -15%; left: 10%; }
+        .blob-red { width: 600px; height: 600px; background: #EF4444; top: -20%; left: 50%; transform: translateX(-50%); }
+        .blob-green { width: 500px; height: 500px; background: #4ADE80; top: -15%; right: 10%; }
 
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-}
+        /* 3. 滾動現身特效 (Scroll Reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-/* Header */
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 30px 10%;
-    position: absolute;
-    width: 100%;
-    z-index: 10;
-}
+        /* 4. 十字旋轉動畫 */
+        .cross-icon {
+            transition: transform 0.1s linear;
+        }
 
-nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
-}
+        /* 5. 圖片懸停優化 */
+        .project-card img {
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+        .project-card .overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .project-card:hover .overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-[#FDFCF8] text-gray-800 antialiased overflow-x-hidden selection:bg-red-200 selection:text-red-900">
 
-/* Hero Section with Mesh Gradient */
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
+    <div class="blob-cont" id="blob-container">
+        <div class="blob blob-yellow" data-speed="2"></div>
+        <div class="blob blob-red" data-speed="-1"></div> <div class="blob blob-green" data-speed="1.5"></div>
+    </div>
 
-.gradient-bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    filter: blur(80px);
-    z-index: -1;
-    opacity: 0.6;
-}
+    <nav class="flex justify-between items-center py-6 px-6 md:px-12 max-w-7xl mx-auto relative z-20 reveal">
+        <a href="#" class="text-2xl font-bold serif tracking-wider hover:opacity-70 transition">Solution Lab</a>
+        <div class="space-x-8 text-sm font-medium text-gray-600 hidden md:block">
+            <a href="#about" class="hover:text-black hover:underline underline-offset-4 transition">關於我</a>
+            <a href="#research" class="hover:text-black hover:underline underline-offset-4 transition">學術研究</a>
+            <a href="#projects" class="hover:text-black hover:underline underline-offset-4 transition">設計專案</a>
+        </div>
+    </nav>
 
-.circle {
-    position: absolute;
-    border-radius: 50%;
-}
+    <header class="relative z-10 text-center pt-20 pb-32 px-4 min-h-[80vh] flex flex-col justify-center">
+        <div class="mb-8 flex justify-center">
+            <span id="rotating-cross" class="cross-icon text-white text-5xl font-light opacity-80 inline-block">+</span> 
+        </div>
+        
+        <div class="reveal">
+            <h1 class="text-6xl md:text-8xl font-bold text-white mb-6 tracking-wide drop-shadow-sm leading-tight">
+                Solution Lab
+            </h1>
+        </div>
 
-.yellow { width: 400px; height: 400px; background: #f1c40f; top: 10%; left: 15%; }
-.red { width: 500px; height: 500px; background: #e74c3c; top: 20%; left: 35%; }
-.green { width: 400px; height: 400px; background: #27ae60; top: 10%; right: 15%; }
+        <div class="reveal" style="transition-delay: 0.1s;">
+            <p class="max-w-xl mx-auto text-gray-600 text-base md:text-lg leading-relaxed mb-10 font-medium bg-white/30 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+                從問題到實踐的解決方案基地。<br>
+                結合 <span class="text-black font-semibold">設計思維</span> 與 <span class="text-black font-semibold">專案管理</span>，<br>將複雜挑戰轉化為落地價值。
+            </p>
+        </div>
 
-.hero-content h1 {
-    font-size: 4rem;
-    font-family: serif;
-    margin-bottom: 20px;
-}
+        <div class="reveal flex justify-center gap-4 md:gap-8 text-xs font-bold tracking-widest uppercase w-max mx-auto pt-4" style="transition-delay: 0.2s;">
+            <span class="border-b border-black pb-1">Brand Strategy</span>
+            <span class="border-b border-black pb-1">UX/UI Design</span>
+            <span class="border-b border-black pb-1">PM & Planning</span>
+        </div>
+    </header>
 
-.tags span {
-    border: 1px solid #333;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    margin: 0 5px;
-}
+    <section id="about" class="max-w-6xl mx-auto px-6 py-24 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+            <div class="md:col-span-5 relative reveal">
+                <div class="relative rounded-t-[10rem] rounded-b-[2rem] overflow-hidden bg-gradient-to-b from-red-100 to-white shadow-2xl aspect-[3/4] group cursor-none">
+                    <img src="https://via.placeholder.com/400x600?text=Radko" alt="Radko" class="object-cover w-full h-full mix-blend-multiply opacity-90 group-hover:scale-105 transition duration-700">
+                    
+                    <div class="absolute bottom-6 left-6 text-gray-900 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-white/50">
+                        <h2 class="text-3xl font-bold serif">Radko</h2>
+                        <p class="text-xs font-bold tracking-wider mt-1 text-gray-500 uppercase">Interactive Designer & PM</p>
+                    </div>
+                </div>
+            </div>
 
-/* About Section */
-.about {
-    padding: 100px 10%;
-}
+            <div class="md:col-span-7 space-y-12">
+                <div class="space-y-8">
+                    <div class="flex gap-6 group reveal" style="transition-delay: 0.1s;">
+                        <span class="text-2xl font-light text-red-500 group-hover:rotate-90 transition duration-300">+</span>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2 group-hover:text-red-500 transition">跨域設計整合</h3>
+                            <p class="text-gray-500 leading-relaxed">串聯視覺、行銷與技術，打破資訊孤島，確保設計能解決實際商業問題。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 group reveal" style="transition-delay: 0.2s;">
+                        <span class="text-2xl font-light text-yellow-500 group-hover:rotate-90 transition duration-300">+</span>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2 group-hover:text-yellow-500 transition">設計策略研究</h3>
+                            <p class="text-gray-500 leading-relaxed">用數據與質化訪談支撐設計決策，從模糊需求中梳理出清晰的產品脈絡。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 group reveal" style="transition-delay: 0.3s;">
+                        <span class="text-2xl font-light text-green-500 group-hover:rotate-90 transition duration-300">+</span>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2 group-hover:text-green-500 transition">多維領域實踐</h3>
+                            <p class="text-gray-500 leading-relaxed">從無人機足球到資安推廣，在不同領域中快速適應並產出高質量方案。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-.about-container {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 50px;
-    align-items: center;
-}
+    <section id="research" class="max-w-6xl mx-auto px-6 py-24 border-t border-gray-100">
+        <h2 class="text-center text-3xl font-bold serif mb-16 reveal">Academic Research</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+            <div class="bg-gray-50 aspect-video flex items-center justify-center border border-gray-200 relative reveal group overflow-hidden">
+                <span class="text-gray-400 z-10 group-hover:scale-110 transition duration-500">Research Visualization 01</span>
+                <div class="absolute inset-0 bg-gray-100 transform translate-y-full group-hover:translate-y-0 transition duration-500 ease-in-out"></div>
+            </div>
+            <div class="bg-gray-50 aspect-video flex items-center justify-center border border-gray-200 relative reveal group overflow-hidden" style="transition-delay: 0.1s;">
+                <span class="text-gray-400 z-10 group-hover:scale-110 transition duration-500">Research Visualization 02</span>
+                <div class="absolute inset-0 bg-gray-100 transform translate-y-full group-hover:translate-y-0 transition duration-500 ease-in-out"></div>
+            </div>
+        </div>
 
-.profile-card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 40px 40px 0 0; /* 模擬圖中的紅底圓角 */
-    text-align: center;
-}
+        <div class="space-y-6 max-w-3xl mx-auto">
+            <div class="flex gap-4 items-start reveal border-l-2 border-transparent hover:border-blue-500 pl-4 transition-all duration-300">
+                <span class="text-2xl filter grayscale hover:grayscale-0 transition">🇸🇪</span>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    <strong>HCI International Conference (Sweden):</strong> Engagement of Collaborative Tutorials in Remote Augmented Reality. <span class="text-gray-400 font-mono text-xs ml-2">2024</span>
+                </p>
+            </div>
+            <div class="flex gap-4 items-start reveal border-l-2 border-transparent hover:border-red-500 pl-4 transition-all duration-300">
+                <span class="text-2xl filter grayscale hover:grayscale-0 transition">🇺🇸</span>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    <strong>Oral Presentation at Washington D.C.:</strong> A Pilot Study of Cultural Differences in Document Authentication Perception. <span class="text-gray-400 font-mono text-xs ml-2">2024</span>
+                </p>
+            </div>
+            <div class="flex gap-4 items-start reveal border-l-2 border-transparent hover:border-green-500 pl-4 transition-all duration-300">
+                <span class="text-2xl filter grayscale hover:grayscale-0 transition">🇹🇼</span>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    <strong>TAICHI Conference (Taiwan):</strong> User Trust in AI-Generated Content for Fintech Applications. <span class="text-gray-400 font-mono text-xs ml-2">2023</span>
+                </p>
+            </div>
+        </div>
+    </section>
 
-.photo-placeholder img {
-    width: 100%;
-    border-radius: 30px;
-    background: #e74c3c; /* 模擬紅底 */
-}
+    <section id="projects" class="bg-[#1a1a1a] text-white py-32 px-6 relative z-10 rounded-t-[3rem] mt-12">
+        <div class="text-center mb-20 reveal">
+            <h2 class="text-4xl md:text-6xl serif mb-4">The Solution is...</h2>
+            <p class="text-gray-400 text-sm tracking-widest uppercase">Select a Dimension</p>
+        </div>
 
-.skill-item {
-    margin-bottom: 30px;
-}
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+            <div class="group cursor-pointer project-card reveal">
+                <div class="flex justify-between items-end mb-4 border-b border-gray-700 pb-2">
+                    <div class="font-serif text-2xl text-white">UI/UX</div>
+                    <div class="text-xs text-gray-500">01</div>
+                </div>
+                <div class="bg-gray-800 rounded-2xl overflow-hidden aspect-[9/16] relative border border-gray-700 shadow-2xl">
+                    <img src="https://via.placeholder.com/300x500/333333/ffffff?text=App+Interface" class="w-full h-full object-cover opacity-80" alt="UI/UX">
+                    <div class="overlay absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                        <span class="text-xs font-bold bg-white text-black w-max px-2 py-1 mb-2">FINTECH APP</span>
+                        <p class="text-sm text-gray-200">Redesigning the payment flow for better user retention.</p>
+                    </div>
+                </div>
+            </div>
 
-/* Portfolio Section */
-.portfolio {
-    background-color: #222;
-    color: #fff;
-    padding: 100px 10%;
-    text-align: center;
-}
+            <div class="group cursor-pointer mt-0 md:-mt-12 project-card reveal" style="transition-delay: 0.1s;"> 
+                <div class="flex justify-between items-end mb-4 border-b border-gray-700 pb-2">
+                    <div class="font-serif text-2xl text-white">Product</div>
+                    <div class="text-xs text-gray-500">02</div>
+                </div>
+                <div class="bg-gray-800 rounded-2xl overflow-hidden aspect-[9/16] relative border border-gray-700 shadow-2xl">
+                    <img src="https://via.placeholder.com/300x500/444444/ffffff?text=Drone+Soccer" class="w-full h-full object-cover opacity-80" alt="Product">
+                    <div class="overlay absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                        <span class="text-xs font-bold bg-white text-black w-max px-2 py-1 mb-2">DRONE SOCCER</span>
+                        <p class="text-sm text-gray-200">Event management & promotional material design.</p>
+                    </div>
+                </div>
+            </div>
 
-.section-title {
-    font-size: 3rem;
-    font-family: serif;
-    margin-bottom: 50px;
-}
+            <div class="group cursor-pointer project-card reveal" style="transition-delay: 0.2s;">
+                <div class="flex justify-between items-end mb-4 border-b border-gray-700 pb-2">
+                    <div class="font-serif text-2xl text-white">Visual</div>
+                    <div class="text-xs text-gray-500">03</div>
+                </div>
+                <div class="bg-gray-800 rounded-2xl overflow-hidden aspect-[9/16] relative border border-gray-700 shadow-2xl">
+                    <img src="https://via.placeholder.com/300x500/555555/ffffff?text=Info+Sec" class="w-full h-full object-cover opacity-80" alt="Visual">
+                    <div class="overlay absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                        <span class="text-xs font-bold bg-white text-black w-max px-2 py-1 mb-2">INFO SECURITY</span>
+                        <p class="text-sm text-gray-200">Visualizing complex data for general awareness.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-.grid {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-}
+    <footer class="relative bg-[#FDFCF8] py-24 px-6 text-center overflow-hidden">
+        <div class="relative z-10 reveal">
+            <h2 class="text-4xl md:text-6xl font-bold text-gray-800 mb-6 tracking-tight">
+                Your Vision, My Solution.
+            </h2>
+            <a href="mailto:hello@radko.com" class="inline-block text-xl md:text-2xl font-serif italic text-gray-500 hover:text-black transition border-b border-gray-300 pb-1 mb-12">
+                Let's solve together.
+            </a>
+            <div class="text-[10px] text-gray-400 uppercase tracking-widest">
+                © Solution Lab, 2026
+            </div>
+        </div>
+    </footer>
 
-.project-card .img-box {
-    width: 250px;
-    height: 400px;
-    background: #444;
-    border-radius: 30px;
-    overflow: hidden;
-    margin: 20px auto;
-}
+    <script>
+        // 1. Scroll Reveal (滾動出現特效)
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
 
-.project-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        // Trigger once on load
+        revealOnScroll();
 
-/* Footer */
-footer {
-    height: 60vh;
-    background: #e74c3c; /* 這裡可以使用跟 Hero 一樣的漸層 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-}
+        // 2. Mouse Parallax (背景滑鼠跟隨)
+        document.addEventListener('mousemove', (e) => {
+            const blobs = document.querySelectorAll('.blob');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            blobs.forEach(blob => {
+                const speed = blob.getAttribute('data-speed');
+                const xOffset = (window.innerWidth - e.clientX * speed) / 20;
+                const yOffset = (window.innerHeight - e.clientY * speed) / 20;
+
+                blob.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+        });
+
+        // 3. Rotating Cross (十字旋轉)
+        const cross = document.getElementById('rotating-cross');
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            cross.style.transform = `rotate(${scrollPos * 0.2}deg)`;
+        });
+    </script>
+</body>
+</html>
