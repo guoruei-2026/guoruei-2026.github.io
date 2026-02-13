@@ -3,217 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solution Lab | Guo Rui</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
-    
+    <title>Solution Lab | Radko Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     <style>
-        /* 全局設定 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, 'Microsoft JhengHei', sans-serif;
-        }
-
-        body {
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* 導航列 */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%;
-            position: fixed;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-left: 2rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
-
-        /* Hero Section (大圖區塊) */
-        #hero {
-            height: 100vh; /* 設定高度佔滿螢幕 */
-            width: 100%;
-            background-image: url('images/homepageimage.jpg');
-            
-            background-size: cover;   /* 讓圖片填滿 */
-            background-position: center; /* 置中 */
-            background-repeat: no-repeat;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
         
-        <img src="images/heroword.png" id="center-logo" class="fade-img" alt="中央圖片">
-
-        /* 專案區塊 */
-        #projects {
-            padding: 5rem 5%;
+        /* 彌散光暈特效 */
+        .blob-cont {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+            background: #FDFCF8; /* 米白底色 */
         }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2rem;
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
         }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: #fff;
-            border: 1px solid #eee;
-            padding: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .card-image {
-            height: 200px;
-            background-color: #ddd;
-            margin-bottom: 15px;
-            border-radius: 5px;
-        }
-
-        .link {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        /* 頁尾 */
-        footer {
-            text-align: center;
-            padding: 4rem 20px;
-            background: #333;
-            color: #fff;
-        }
-
-        footer .btn {
-            display: inline-block;
-            background: #fff;
-            color: #333;
-            padding: 10px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
+        .blob-yellow { width: 400px; height: 400px; background: #FACC15; top: -100px; left: 10%; }
+        .blob-red { width: 500px; height: 500px; background: #EF4444; top: -150px; left: 50%; transform: translateX(-50%); }
+        .blob-green { width: 400px; height: 400px; background: #4ADE80; top: -100px; right: 10%; }
+        
+        /* 底部光暈 */
+        .footer-blob-cont {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
         }
     </style>
 </head>
-<body>
+<body class="bg-[#FDFCF8] text-gray-800 antialiased overflow-x-hidden">
 
-    <nav>
-        <div class="logo">Solution Lab</div>
-        <ul>
-            <li><a href="#about">關於我</a></li>
-            <li><a href="#projects">精選專案</a></li>
-            <li><a href="#contact">聯絡方式</a></li>
-        </ul>
+    <div class="blob-cont">
+        <div class="blob blob-yellow"></div>
+        <div class="blob blob-red"></div>
+        <div class="blob blob-green"></div>
+    </div>
+
+    <nav class="flex justify-between items-center py-6 px-8 max-w-7xl mx-auto relative z-10">
+        <div class="text-2xl font-bold serif tracking-wider">Solution Lab</div>
+        <div class="space-x-8 text-sm font-medium text-gray-600 hidden md:block">
+            <a href="#" class="hover:text-black transition">關於我</a>
+            <a href="#" class="hover:text-black transition">學術研究</a>
+            <a href="#" class="hover:text-black transition">設計專案</a>
+        </div>
     </nav>
 
-    <header id="hero"></header>
-<img src="images/heroword.png" class="fade-img" alt="中央圖片">
+    <header class="relative z-10 text-center pt-20 pb-32 px-4">
+        <div class="mb-6 flex justify-center">
+            <span class="text-white text-4xl font-light opacity-80">+</span> </div>
+        <h1 class="text-6xl md:text-8xl font-bold text-white drop-shadow-sm mb-6 tracking-wide" style="text-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            Solution Lab
+        </h1>
+        <p class="max-w-xl mx-auto text-gray-600 text-sm md:text-base leading-relaxed mb-10">
+            從問題到實踐的解決方案基地。<br>
+            結合設計思維與專案管理，將複雜挑戰轉化為落地價值。
+        </p>
+        <div class="flex justify-center gap-6 text-xs font-bold tracking-widest uppercase border-t border-gray-300 w-max mx-auto pt-4">
+            <span>Brand Strategy</span>
+            <span>UX/UI Design</span>
+            <span>PM & Planning</span>
+        </div>
+    </header>
 
-    <section id="projects">
-        <h2 class="section-title">精選專案</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <div class="card-image"></div> 
-                <h3>資訊安全推廣視覺</h3>
-                <p>透過視覺設計提升資安意識的傳播效率。</p>
-                <a href="#" class="link">閱讀案例分析 &rarr;</a>
+    <section class="max-w-6xl mx-auto px-6 py-20 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-5 relative">
+                <div class="relative rounded-t-full overflow-hidden bg-red-100 aspect-[3/4]">
+                    <img src="https://via.placeholder.com/400x600?text=Radko+Photo" alt="Radko" class="object-cover w-full h-full mix-blend-multiply opacity-90">
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <h2 class="text-4xl font-bold serif">Radko</h2>
+                        <p class="text-sm opacity-90">國立臺北大學 | 數位行銷與專案管理</p>
+                    </div>
+                </div>
+                <div class="flex gap-2 mt-4">
+                    <span class="bg-black text-white px-3 py-1 rounded-full text-xs">UI/UX</span>
+                    <span class="bg-black text-white px-3 py-1 rounded-full text-xs">Project Manager</span>
+                </div>
             </div>
-            <div class="project-card">
-                <div class="card-image"></div>
-                <h3>無人機足球俱樂部行銷</h3>
-                <p>從零到一的社團推廣與視覺識別建立。</p>
-                <a href="#" class="link">閱讀案例分析 &rarr;</a>
-            </div>
-            <div class="project-card">
-                <div class="card-image"></div>
-                <h3>原創音樂與舞台演出</h3>
-                <p>詞曲創作經驗與公眾表演的溝通藝術。</p>
-                <a href="#" class="link">聆聽作品 &rarr;</a>
+
+            <div class="md:col-span-7 space-y-10">
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <span class="text-xl font-bold">+</span>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">跨域設計整合</h3>
+                            <p class="text-sm text-gray-500">串聯視覺、行銷與技術，打破資訊孤島，確保設計能解決實際商業問題。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="text-xl font-bold">+</span>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">設計策略研究</h3>
+                            <p class="text-sm text-gray-500">用數據與質化訪談支撐設計決策，從模糊需求中梳理出清晰的產品脈絡。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="text-xl font-bold">+</span>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">多維領域實踐</h3>
+                            <p class="text-sm text-gray-500">從無人機足球到資安推廣，在不同領域中快速適應並產出高質量方案。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-200 pt-6">
+                    <h4 class="font-bold mb-2">學歷背景</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        國立臺北大學 碩士 / 互動設計與創新科技<br>
+                        主修數位內容與科技行銷，擅長 HCI 人機互動研究。<br>
+                        <span class="text-xs text-gray-400 mt-2 block">相關證照：Google Project Management Certificate</span>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
-        <h2>讓我們開始對話</h2>
-        <p>正在尋找 PM 職位機會，歡迎聯繫。</p>
-        <a href="mailto:your-email@example.com" class="btn">發送 Email</a>
-        <p class="copyright">© 2026 Guo Rui. All Rights Reserved.</p>
+    <section class="max-w-6xl mx-auto px-6 py-20 border-t border-gray-200">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-gray-100 aspect-video flex items-center justify-center border border-gray-300 relative">
+                <span class="text-gray-400">Research Image 01</span>
+                <div class="absolute inset-0 border border-gray-300" style="clip-path: polygon(0 0, 100% 100%, 100% 0, 0 100%); opacity: 0.2;"></div>
+            </div>
+            <div class="bg-gray-100 aspect-video flex items-center justify-center border border-gray-300 relative">
+                <span class="text-gray-400">Research Image 02</span>
+                <div class="absolute inset-0 border border-gray-300" style="clip-path: polygon(0 0, 100% 100%, 100% 0, 0 100%); opacity: 0.2;"></div>
+            </div>
+        </div>
+
+        <div class="space-y-4 max-w-3xl mx-auto">
+            <div class="flex gap-4 items-start">
+                <span class="text-xl">🇸🇪</span>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                    <strong>HCI International Conference (Sweden):</strong> Engagement of Collaborative Tutorials in Remote Augmented Reality. <span class="text-gray-400">2024</span>
+                </p>
+            </div>
+            <div class="flex gap-4 items-start">
+                <span class="text-xl">🇺🇸</span>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                    <strong>Oral Presentation at Washington D.C.:</strong> A Pilot Study of Cultural Differences in Document Authentication Perception. <span class="text-gray-400">2024</span>
+                </p>
+            </div>
+            <div class="flex gap-4 items-start">
+                <span class="text-xl">🇹🇼</span>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                    <strong>TAICHI Conference (Taiwan):</strong> User Trust in AI-Generated Content for Fintech Applications. <span class="text-gray-400">2023</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[#1a1a1a] text-white py-24 px-6 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl serif mb-2">The Solution is...</h2>
+            <p class="text-gray-400 text-sm">Design Strategy / Product Management / Visual Communication</p>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="group cursor-pointer">
+                <div class="text-center font-serif text-xl mb-4 text-gray-300">UI/UX</div>
+                <div class="bg-gray-800 rounded-3xl overflow-hidden aspect-[9/16] relative border border-gray-700 transition transform group-hover:-translate-y-2">
+                    <img src="https://via.placeholder.com/300x500/333333/ffffff?text=App+Interface" alt="UI/UX" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
+                    <div class="absolute bottom-4 left-4 right-4 flex justify-between">
+                        <span class="bg-white text-black text-[10px] px-2 py-1 rounded font-bold">Mobile App</span>
+                        <span class="text-xs">Finance</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group cursor-pointer mt-0 md:-mt-8"> <div class="text-center font-serif text-xl mb-4 text-gray-300">PRODUCT</div>
+                <div class="bg-gray-800 rounded-3xl overflow-hidden aspect-[9/16] relative border border-gray-700 transition transform group-hover:-translate-y-2">
+                    <img src="https://via.placeholder.com/300x500/444444/ffffff?text=Poster+Design" alt="Product" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
+                    <div class="absolute bottom-4 left-4 right-4 flex justify-between">
+                        <span class="bg-white text-black text-[10px] px-2 py-1 rounded font-bold">Drone Soccer</span>
+                        <span class="text-xs">Event PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group cursor-pointer">
+                <div class="text-center font-serif text-xl mb-4 text-gray-300">VISUAL</div>
+                <div class="bg-gray-800 rounded-3xl overflow-hidden aspect-[9/16] relative border border-gray-700 transition transform group-hover:-translate-y-2">
+                    <img src="https://via.placeholder.com/300x500/555555/ffffff?text=Visual+Art" alt="Visual" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
+                    <div class="absolute bottom-4 left-4 right-4 flex justify-between">
+                        <span class="bg-white text-black text-[10px] px-2 py-1 rounded font-bold">Info Sec</span>
+                        <span class="text-xs">Graphic</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="relative bg-[#FDFCF8] py-20 px-6 text-center overflow-hidden">
+        <div class="footer-blob-cont">
+             <div class="blob blob-yellow" style="bottom: -100px; left: 20%; top: auto;"></div>
+             <div class="blob blob-red" style="bottom: -150px; left: 50%; top: auto; transform: translateX(-50%);"></div>
+             <div class="blob blob-green" style="bottom: -100px; right: 20%; top: auto;"></div>
+        </div>
+
+        <div class="relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-800 mb-4 drop-shadow-sm">
+                Your Vision, My Solution.
+            </h2>
+            <p class="text-xl md:text-2xl font-serif italic text-gray-600 mb-12">
+                Let's solve together.
+            </p>
+            <div class="text-xs text-gray-400 uppercase tracking-widest">
+                © Solution Lab, 2026
+            </div>
+        </div>
     </footer>
-
-<script>
-    // 1. 抓取 Hero 區塊和圖片
-    const heroSection = document.getElementById('hero');
-    const centerLogo = document.getElementById('center-logo');
-
-    // 2. 設定「感應範圍」半徑 (單位 px)
-    // 數字越大，滑鼠要在很遠的地方圖片就開始變透明
-    const sensitivity = 400; 
-
-    // 3. 監聽滑鼠移動事件
-    heroSection.addEventListener('mousemove', function(e) {
-        // 取得 Hero 區塊的中心點座標
-        const rect = heroSection.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-
-        // 計算滑鼠位置跟中心點的距離 (毕氏定理)
-        const distance = Math.sqrt(
-            Math.pow(e.clientX - centerX, 2) + 
-            Math.pow(e.clientY - centerY, 2)
-        );
-
-        // 計算透明度：距離越近(小)，透明度越低
-        // 距離 / 感應範圍 = 透明度比例 (0 ~ 1)
-        let newOpacity = distance / sensitivity;
-
-        // 限制透明度最大只能是 1 (不然會爆掉)
-        if (newOpacity > 1) newOpacity = 1;
-        
-        // 套用透明度
-        centerLogo.style.opacity = newOpacity;
-    });
-
-    // 4. (選用) 當滑鼠離開 Hero 區塊時，確保圖片恢復顯示
-    heroSection.addEventListener('mouseleave', function() {
-        centerLogo.style.opacity = 1;
-    });
-</script>
-</body> ```
 
 </body>
 </html>
