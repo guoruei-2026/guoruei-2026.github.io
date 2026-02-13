@@ -63,6 +63,8 @@
             background-position: center; /* 置中 */
             background-repeat: no-repeat;
         }
+        
+        <img src="images/heroword.png" id="center-logo" class="fade-img" alt="中央圖片">
 
         /* 專案區塊 */
         #projects {
@@ -140,6 +142,7 @@
     </nav>
 
     <header id="hero"></header>
+<img src="images/heroword.png" class="fade-img" alt="中央圖片">
 
     <section id="projects">
         <h2 class="section-title">精選專案</h2>
@@ -171,6 +174,46 @@
         <a href="mailto:your-email@example.com" class="btn">發送 Email</a>
         <p class="copyright">© 2026 Guo Rui. All Rights Reserved.</p>
     </footer>
+
+<script>
+    // 1. 抓取 Hero 區塊和圖片
+    const heroSection = document.getElementById('hero');
+    const centerLogo = document.getElementById('center-logo');
+
+    // 2. 設定「感應範圍」半徑 (單位 px)
+    // 數字越大，滑鼠要在很遠的地方圖片就開始變透明
+    const sensitivity = 400; 
+
+    // 3. 監聽滑鼠移動事件
+    heroSection.addEventListener('mousemove', function(e) {
+        // 取得 Hero 區塊的中心點座標
+        const rect = heroSection.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // 計算滑鼠位置跟中心點的距離 (毕氏定理)
+        const distance = Math.sqrt(
+            Math.pow(e.clientX - centerX, 2) + 
+            Math.pow(e.clientY - centerY, 2)
+        );
+
+        // 計算透明度：距離越近(小)，透明度越低
+        // 距離 / 感應範圍 = 透明度比例 (0 ~ 1)
+        let newOpacity = distance / sensitivity;
+
+        // 限制透明度最大只能是 1 (不然會爆掉)
+        if (newOpacity > 1) newOpacity = 1;
+        
+        // 套用透明度
+        centerLogo.style.opacity = newOpacity;
+    });
+
+    // 4. (選用) 當滑鼠離開 Hero 區塊時，確保圖片恢復顯示
+    heroSection.addEventListener('mouseleave', function() {
+        centerLogo.style.opacity = 1;
+    });
+</script>
+</body> ```
 
 </body>
 </html>
