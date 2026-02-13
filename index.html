@@ -3,9 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Solution Lab 加法混合 </title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>Solution Lab | Guo Rui</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    
+    <style>
+        /* 全局設定 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, 'Microsoft JhengHei', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* 導航列 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Hero Section (大圖區塊) */
+        #hero {
+            height: 100vh; /* 設定高度佔滿螢幕 */
+            width: 100%;
+            
+            /* ✅ 這裡設定背景圖 */
+            /* 請確認你的 images 資料夾裡真的有這張圖，且檔名一模一樣 */
+            background-image: url('images/homepage_image.jpg');
+            
+            background-size: cover;   /* 讓圖片填滿 */
+            background-position: center; /* 置中 */
+            background-repeat: no-repeat;
+        }
+
+        /* 專案區塊 */
+        #projects {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-image {
+            height: 200px;
+            background-color: #ddd;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .link {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        /* 頁尾 */
+        footer {
+            text-align: center;
+            padding: 4rem 20px;
+            background: #333;
+            color: #fff;
+        }
+
+        footer .btn {
+            display: inline-block;
+            background: #fff;
+            color: #333;
+            padding: 10px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
@@ -18,29 +142,25 @@
         </ul>
     </nav>
 
-    <header id="hero">
-        <div class="hero-content">
-        </div>
-    </header>
+    <header id="hero"></header>
 
     <section id="projects">
         <h2 class="section-title">精選專案</h2>
         <div class="project-grid">
             <div class="project-card">
-                <div class="card-image" style="background-color: #ddd;"></div> <h3>資訊安全推廣視覺</h3>
+                <div class="card-image"></div> 
+                <h3>資訊安全推廣視覺</h3>
                 <p>透過視覺設計提升資安意識的傳播效率。</p>
                 <a href="#" class="link">閱讀案例分析 &rarr;</a>
             </div>
-
             <div class="project-card">
-                <div class="card-image" style="background-color: #ddd;"></div>
+                <div class="card-image"></div>
                 <h3>無人機足球俱樂部行銷</h3>
                 <p>從零到一的社團推廣與視覺識別建立。</p>
                 <a href="#" class="link">閱讀案例分析 &rarr;</a>
             </div>
-
             <div class="project-card">
-                <div class="card-image" style="background-color: #ddd;"></div>
+                <div class="card-image"></div>
                 <h3>原創音樂與舞台演出</h3>
                 <p>詞曲創作經驗與公眾表演的溝通藝術。</p>
                 <a href="#" class="link">聆聽作品 &rarr;</a>
