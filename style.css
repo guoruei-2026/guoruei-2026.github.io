@@ -1,85 +1,152 @@
-/* style.css */
+:root {
+    --bg-color: #f5f3ef;
+    --text-color: #333;
+    --accent-red: #ff4d4d;
+}
 
-/* 1. 全域字體設定 */
-/* 配合 Google Fonts 引入 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #FDFCF8; /* 米白底色 */
-    color: #1f2937; /* 深灰文字 */
-    overflow-x: hidden; /* 防止光暈超出螢幕產生捲軸 */
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
-h1, h2, h3, .serif {
-    font-family: 'Playfair Display', serif;
-}
-
-/* 2. 背景彌散光暈特效 (Blob Animation) */
-.blob-cont {
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 10%;
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100vh; /* 佔滿視窗高度 */
+    z-index: 10;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Hero Section with Mesh Gradient */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
     overflow: hidden;
-    z-index: -1; /* 置於最底層 */
-    background: #FDFCF8;
 }
 
-.blob {
+.gradient-bg {
     position: absolute;
-    border-radius: 50%; /* 圓形 */
-    filter: blur(80px); /* 高斯模糊核心：數值越大越擴散 */
-    opacity: 0.6; /* 透明度 */
-    animation: float 10s infinite ease-in-out alternate; /* 浮動動畫 */
-}
-
-/* 定義三種顏色的光暈位置與大小 */
-.blob-yellow {
-    width: 400px;
-    height: 400px;
-    background: #FACC15; /* 黃色 */
-    top: -100px;
-    left: 10%;
-    animation-delay: 0s;
-}
-
-.blob-red {
-    width: 500px;
-    height: 500px;
-    background: #EF4444; /* 紅色 */
-    top: -150px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation-delay: 2s; /* 延遲開始，讓動畫錯開 */
-}
-
-.blob-green {
-    width: 400px;
-    height: 400px;
-    background: #4ADE80; /* 綠色 */
-    top: -100px;
-    right: 10%;
-    animation-delay: 4s;
-}
-
-/* 3. 底部 Footer 的光暈容器 */
-.footer-blob-cont {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    z-index: 0;
-    pointer-events: none; /* 讓滑鼠點擊穿透，不會擋到連結 */
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.6;
 }
 
-/* 4. 簡單的浮動動畫關鍵影格 */
-@keyframes float {
-    0% {
-        transform: translate(0, 0) scale(1);
-    }
-    100% {
-        transform: translate(20px, 40px) scale(1.1); /* 稍微移動並放大 */
-    }
+.circle {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.yellow { width: 400px; height: 400px; background: #f1c40f; top: 10%; left: 15%; }
+.red { width: 500px; height: 500px; background: #e74c3c; top: 20%; left: 35%; }
+.green { width: 400px; height: 400px; background: #27ae60; top: 10%; right: 15%; }
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-family: serif;
+    margin-bottom: 20px;
+}
+
+.tags span {
+    border: 1px solid #333;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin: 0 5px;
+}
+
+/* About Section */
+.about {
+    padding: 100px 10%;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.profile-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 40px 40px 0 0; /* 模擬圖中的紅底圓角 */
+    text-align: center;
+}
+
+.photo-placeholder img {
+    width: 100%;
+    border-radius: 30px;
+    background: #e74c3c; /* 模擬紅底 */
+}
+
+.skill-item {
+    margin-bottom: 30px;
+}
+
+/* Portfolio Section */
+.portfolio {
+    background-color: #222;
+    color: #fff;
+    padding: 100px 10%;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-family: serif;
+    margin-bottom: 50px;
+}
+
+.grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.project-card .img-box {
+    width: 250px;
+    height: 400px;
+    background: #444;
+    border-radius: 30px;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Footer */
+footer {
+    height: 60vh;
+    background: #e74c3c; /* 這裡可以使用跟 Hero 一樣的漸層 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
 }
