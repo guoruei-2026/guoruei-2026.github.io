@@ -18,7 +18,7 @@
 
         /* 2. 背景光暈 (優化版：支援 JS 控制) */
         .blob-cont {
-            position: fixed; /* 改為 fixed，讓光暈永遠跟隨視窗 */
+            position: fixed;
             top: 0; left: 0; width: 100%; height: 100vh;
             z-index: -1; overflow: hidden; pointer-events: none;
         }
@@ -27,9 +27,8 @@
             border-radius: 50%;
             filter: blur(80px);
             opacity: 0.6;
-            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); /* 平滑跟隨 */
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-        /* 初始位置 */
         .blob-yellow { width: 500px; height: 500px; background: #FACC15; top: -15%; left: 10%; }
         .blob-red { width: 600px; height: 600px; background: #EF4444; top: -20%; left: 50%; transform: translateX(-50%); }
         .blob-green { width: 500px; height: 500px; background: #4ADE80; top: -15%; right: 10%; }
@@ -66,19 +65,20 @@
         }
     </style>
 </head>
-<body class="bg-[#FDFCF8] text-gray-800 antialiased overflow-x-hidden selection:bg-red-200 selection:text-red-900">
-
-    <div class="blob-cont" id="blob-container">
+<body class="bg-[#FDFCF8] text-gray-800 antialiased overflow-x-hidden selection:bg-red-200 selection:text-red-900 pt-20"> <div class="blob-cont" id="blob-container">
         <div class="blob blob-yellow" data-speed="2"></div>
-        <div class="blob blob-red" data-speed="-1"></div> <div class="blob blob-green" data-speed="1.5"></div>
+        <div class="blob blob-red" data-speed="-1"></div>
+        <div class="blob blob-green" data-speed="1.5"></div>
     </div>
 
-    <nav class="flex justify-between items-center py-6 px-6 md:px-12 max-w-7xl mx-auto relative z-20 reveal">
-        <a href="#" class="text-2xl font-bold serif tracking-wider hover:opacity-70 transition">Solution Lab</a>
-        <div class="space-x-8 text-sm font-medium text-gray-600 hidden md:block">
-            <a href="#about" class="hover:text-black hover:underline underline-offset-4 transition">關於我</a>
-            <a href="#research" class="hover:text-black hover:underline underline-offset-4 transition">學術研究</a>
-            <a href="#projects" class="hover:text-black hover:underline underline-offset-4 transition">設計專案</a>
+    <nav class="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md border-b border-white/20 transition-all duration-300">
+        <div class="flex justify-between items-center py-4 px-6 md:px-12 max-w-7xl mx-auto">
+            <a href="#" class="text-2xl font-bold serif tracking-wider hover:opacity-70 transition">Solution Lab</a>
+            <div class="space-x-8 text-sm font-medium text-gray-600 hidden md:block">
+                <a href="#about" class="hover:text-black hover:underline underline-offset-4 transition">關於我</a>
+                <a href="#research" class="hover:text-black hover:underline underline-offset-4 transition">學術研究</a>
+                <a href="#projects" class="hover:text-black hover:underline underline-offset-4 transition">設計專案</a>
+            </div>
         </div>
     </nav>
 
@@ -107,12 +107,10 @@
         </div>
     </header>
 
-    <section id="about" class="max-w-6xl mx-auto px-6 py-24 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+    <section id="about" class="max-w-6xl mx-auto px-6 py-24 relative z-10 scroll-mt-20"> <div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
             <div class="md:col-span-5 relative reveal">
                 <div class="relative rounded-t-[10rem] rounded-b-[2rem] overflow-hidden bg-gradient-to-b from-red-100 to-white shadow-2xl aspect-[3/4] group cursor-none">
                     <img src="https://via.placeholder.com/400x600?text=Radko" alt="Radko" class="object-cover w-full h-full mix-blend-multiply opacity-90 group-hover:scale-105 transition duration-700">
-                    
                     <div class="absolute bottom-6 left-6 text-gray-900 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-white/50">
                         <h2 class="text-3xl font-bold serif">Radko</h2>
                         <p class="text-xs font-bold tracking-wider mt-1 text-gray-500 uppercase">Interactive Designer & PM</p>
@@ -148,7 +146,7 @@
         </div>
     </section>
 
-    <section id="research" class="max-w-6xl mx-auto px-6 py-24 border-t border-gray-100">
+    <section id="research" class="max-w-6xl mx-auto px-6 py-24 border-t border-gray-100 scroll-mt-20">
         <h2 class="text-center text-3xl font-bold serif mb-16 reveal">Academic Research</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
             <div class="bg-gray-50 aspect-video flex items-center justify-center border border-gray-200 relative reveal group overflow-hidden">
@@ -183,7 +181,7 @@
         </div>
     </section>
 
-    <section id="projects" class="bg-[#1a1a1a] text-white py-32 px-6 relative z-10 rounded-t-[3rem] mt-12">
+    <section id="projects" class="bg-[#1a1a1a] text-white py-32 px-6 relative z-10 rounded-t-[3rem] mt-12 scroll-mt-20">
         <div class="text-center mb-20 reveal">
             <h2 class="text-4xl md:text-6xl serif mb-4">The Solution is...</h2>
             <p class="text-gray-400 text-sm tracking-widest uppercase">Select a Dimension</p>
@@ -249,7 +247,7 @@
     </footer>
 
     <script>
-        // 1. Scroll Reveal (滾動出現特效)
+        // ... (保持原有的 JS 程式碼不變)
         const revealElements = document.querySelectorAll('.reveal');
         
         const revealOnScroll = () => {
@@ -264,10 +262,8 @@
             });
         };
         window.addEventListener('scroll', revealOnScroll);
-        // Trigger once on load
         revealOnScroll();
 
-        // 2. Mouse Parallax (背景滑鼠跟隨)
         document.addEventListener('mousemove', (e) => {
             const blobs = document.querySelectorAll('.blob');
             const x = e.clientX / window.innerWidth;
@@ -282,7 +278,6 @@
             });
         });
 
-        // 3. Rotating Cross (十字旋轉)
         const cross = document.getElementById('rotating-cross');
         window.addEventListener('scroll', () => {
             const scrollPos = window.scrollY;
