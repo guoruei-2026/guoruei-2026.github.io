@@ -30,7 +30,7 @@
             transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         .blob-yellow { width: 800px; height: 800px; background: #FACC15; top: -20%; left: 10%; }
-        .blob-red { width: 800px; height: 800px; background: #EF4444; top: -20%; left: 50%; transform: translateX(-50%); }
+        .blob-red { width: 800px; height: 800px; background: #EF4444; top: -20%; left: 50%; margin-left: -550px; }
         .blob-green { width: 800px; height: 800px; background: #4ADE80; top: -20%; right: 10%; }
 
         /* 3. 滾動現身特效 (Scroll Reveal) */
@@ -67,7 +67,7 @@
 </head>
 <body class="bg-[#FDFCF8] text-gray-800 antialiased overflow-x-hidden selection:bg-red-200 selection:text-red-900 pt-20"> <div class="blob-cont" id="blob-container">
         <div class="blob blob-yellow" data-speed="2"></div>
-        <div class="blob blob-red" data-speed="-1"></div>
+        <div class="blob blob-red" data-speed="-0.2"></div>
         <div class="blob blob-green" data-speed="1.5"></div>
     </div>
 
