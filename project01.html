@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Title | Radko Portfolio</title>
+    <title>Fintech App Redesign | Solution Lab</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     
     <style>
-        /* 繼承首頁的全域設定 */
+        /* 全域設定 */
         html { scroll-behavior: smooth; }
         body { 
             font-family: 'Inter', sans-serif;
             background-color: #FDFCF8;
-            cursor: default;
+            color: #333;
         }
         h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
 
@@ -28,32 +28,171 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* 圖片放大特效 */
-        .zoom-img {
-            transition: transform 0.5s ease;
-        }
-        .zoom-img:hover {
-            transform: scale(1.02);
-        }
     </style>
 </head>
 
-<body class="bg-[#FDFCF8] text-gray-800 antialiased overflow-x-hidden pt-20">
+<body class="antialiased overflow-x-hidden selection:bg-gray-200">
 
-    <nav class="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md border-b border-white/20 transition-all duration-300">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#1a1a1a]/80 backdrop-blur-md border-b border-white/10 text-white transition-all duration-300">
         <div class="flex justify-between items-center py-4 px-6 md:px-12 max-w-7xl mx-auto">
-            <a href="index.html" class="text-2xl font-bold serif tracking-wider hover:opacity-70 transition">Solution Lab</a>
-            
-            <div class="space-x-8 text-sm font-medium text-gray-600 hidden md:block">
-                <a href="index.html#about" class="hover:text-black hover:underline underline-offset-4 transition">關於我</a>
-                <a href="index.html#research" class="hover:text-black hover:underline underline-offset-4 transition">學術研究</a>
-                <a href="index.html#projects" class="hover:text-black hover:underline underline-offset-4 transition">設計專案</a>
-            </div>
+            <a href="index.html" class="text-sm font-bold tracking-widest uppercase hover:text-gray-400 transition flex items-center gap-2">
+                ← Back to Home
+            </a>
+            <span class="text-xs text-gray-400 hidden md:block">UI/UX Case Study</span>
         </div>
     </nav>
 
-    <header class="pt-20 pb-16 px-6 max-w-5xl mx-auto text-center">
+    <header class="bg-[#1a1a1a] text-white pt-40 pb-24 px-6 rounded-b-[3rem] relative z-10">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <span class="text-yellow-500 text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Fintech App Redesign</span>
+            <h1 class="text-5xl md:text-7xl font-bold serif mb-8 leading-tight">
+                Simplifying the <br> Payment Experience
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-light">
+                透過重新梳理資訊架構與優化視覺層級，我們將轉帳流程縮短了 40%，並大幅提升了年輕族群的黏著度。
+            </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 border-t border-gray-800 pt-10 reveal" style="transition-delay: 0.1s;">
+            <div>
+                <h4 class="text-[10px] text-gray-500 uppercase tracking-widest mb-2">My Role</h4>
+                <p class="font-serif text-lg">Lead UI Designer</p>
+            </div>
+            <div>
+                <h4 class="text-[10px] text-gray-500 uppercase tracking-widest mb-2">Timeline</h4>
+                <p class="font-serif text-lg">3 Months (2025)</p>
+            </div>
+            <div>
+                <h4 class="text-[10px] text-gray-500 uppercase tracking-widest mb-2">Tools</h4>
+                <p class="font-serif text-lg">Figma, ProtoPie</p>
+            </div>
+            <div>
+                <h4 class="text-[10px] text-gray-500 uppercase tracking-widest mb-2">Team</h4>
+                <p class="font-serif text-lg">PM x1, Eng x2</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-6 -mt-16 relative z-20 reveal" style="transition-delay: 0.2s;">
+        <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white aspect-video bg-gray-200">
+            <img src="https://via.placeholder.com/1200x675" alt="Project Hero" class="w-full h-full object-cover">
+        </div>
+    </div>
+
+    <main class="max-w-3xl mx-auto px-6 py-32 space-y-32">
+        
+        <section class="reveal">
+            <h2 class="text-3xl font-bold serif mb-6 text-gray-900">01. The Challenge</h2>
+            <p class="text-gray-600 leading-loose text-lg mb-8">
+                原有的 APP 介面過於老舊，資訊層級混亂，導致新用戶在進行「首次轉帳」時的失敗率高達 25%。我們的目標是在不更動後端架構的前提下，透過介面優化來解決此問題。
+            </p>
+            <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-400">
+                <h4 class="font-bold text-red-800 mb-2">核心痛點：</h4>
+                <ul class="list-disc list-inside text-red-700 space-y-1">
+                    <li>步驟過於繁瑣（平均需點擊 9 次）。</li>
+                    <li>缺乏明確的錯誤反饋。</li>
+                    <li>視覺風格無法吸引 Z 世代用戶。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <h2 class="text-3xl font-bold serif mb-6 text-gray-900">02. Design Process</h2>
+            <p class="text-gray-600 leading-loose text-lg mb-8">
+                我們首先繪製了 User Journey Map，並針對 10 位目標用戶進行了易用性測試。草圖階段，我們嘗試了三種不同的導航結構。
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                    <img src="https://via.placeholder.com/600x400?text=Sketches" class="rounded-xl shadow-lg hover:scale-[1.02] transition duration-500">
+                    <p class="text-xs text-center text-gray-400 mt-2">初期手繪草稿</p>
+                </div>
+                <div class="space-y-2 md:mt-12">
+                    <img src="https://via.placeholder.com/600x400?text=Wireframe" class="rounded-xl shadow-lg hover:scale-[1.02] transition duration-500">
+                    <p class="text-xs text-center text-gray-400 mt-2">低保真原型測試</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <h2 class="text-3xl font-bold serif mb-10 text-gray-900 text-center">03. The Solution</h2>
+            
+            <div class="mb-20">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold">A</span>
+                    <h3 class="text-xl font-bold">一鍵式轉帳首頁</h3>
+                </div>
+                <p class="text-gray-600 mb-6">將最常用的轉帳對象設為快捷鍵，並將餘額顯示視覺化。</p>
+                <img src="https://via.placeholder.com/800x600?text=UI+Screen+1" class="w-full rounded-xl shadow-2xl">
+            </div>
+
+            <div>
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold">B</span>
+                    <h3 class="text-xl font-bold">清晰的交易明細</h3>
+                </div>
+                <p class="text-gray-600 mb-6">運用色彩區分支出與收入，並引入圖表分析功能。</p>
+                <img src="https://via.placeholder.com/800x600?text=UI+Screen+2" class="w-full rounded-xl shadow-2xl">
+            </div>
+        </section>
+
+    </main>
+
+    <section class="bg-gray-100 py-24 reveal">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold serif mb-12 text-gray-900">Impact & Results</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <span class="block text-4xl font-bold text-green-600 mb-2">+40%</span>
+                    <span class="text-sm text-gray-500 uppercase tracking-widest">Efficiency</span>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <span class="block text-4xl font-bold text-green-600 mb-2">-25%</span>
+                    <span class="text-sm text-gray-500 uppercase tracking-widest">Drop-off Rate</span>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <span class="block text-4xl font-bold text-green-600 mb-2">4.8</span>
+                    <span class="text-sm text-gray-500 uppercase tracking-widest">App Store Rating</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#1a1a1a] text-white py-32 px-6 text-center mt-0">
         <div class="reveal">
-            <span class="text-sm font-bold tracking-widest text-gray-400 uppercase mb-4 block">UI/UX Design</span>
-            <h1 class="text-5xl md:text-7xl font-bold serif text-gray-900 mb-
+            <p class="text-gray-500 text-xs tracking-widest uppercase mb-6">Next Case Study</p>
+            <a href="#" class="group inline-block">
+                <h2 class="text-4xl md:text-6xl font-serif group-hover:opacity-70 transition duration-300">
+                    Drone Soccer Event
+                </h2>
+                <div class="h-[1px] bg-white w-0 group-hover:w-full transition-all duration-500 mt-2 mx-auto"></div>
+            </a>
+            
+            <div class="mt-20 flex justify-center gap-8 text-sm text-gray-500 font-medium">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="mailto:hello@radko.com" class="hover:text-white transition">Contact</a>
+                <a href="#" class="hover:text-white transition">LinkedIn</a>
+            </div>
+            
+            <div class="mt-12 text-[10px] text-gray-600 uppercase tracking-widest">
+                © Solution Lab, 2026
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Trigger once on load
+    </script>
+</body>
+</html>
