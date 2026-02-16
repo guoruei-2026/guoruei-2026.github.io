@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX Projects | Solution Lab</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #FDFCF8; }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800 pt-20">
+
+    <nav class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+        <div class="flex justify-between items-center py-4 px-6 md:px-12 max-w-7xl mx-auto">
+            <a href="index.html" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-gray-500 transition">
+                ← Back to Home
+            </a>
+            <span class="text-xs text-gray-400">UI/UX Selection</span>
+        </div>
+    </nav>
+
+    <header class="py-24 px-6 text-center max-w-4xl mx-auto reveal">
+        <span class="text-yellow-600 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Selected Works</span>
+        <h1 class="text-5xl md:text-7xl font-bold serif text-gray-900 mb-6 leading-tight">
+            UI/UX Design
+        </h1>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
+            透過邏輯與美學的結合，解決複雜的使用者問題。<br>以下是精選的兩個案例研究。
+        </p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 pb-40">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+            <a href="project-fintech.html" class="group block cursor-pointer reveal">
+                <div class="overflow-hidden rounded-2xl shadow-xl aspect-[4/3] relative mb-6">
+                    <img src="images/dimension-01.png" alt="Fintech App" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 group-hover:opacity-90">
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
+                        Fintech
+                    </div>
+                </div>
+                <div class="border-b border-gray-200 pb-4 group-hover:border-black transition duration-300">
+                    <div class="flex justify-between items-end mb-2">
+                        <h2 class="text-3xl font-serif font-bold group-hover:text-yellow-600 transition">Payment Flow Redesign</h2>
+                        <span class="text-gray-300 font-serif text-4xl italic group-hover:text-black transition">01</span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        優化支付流程，提升用戶留存率與操作效率。
+                    </p>
+                </div>
+            </a>
+
+            <a href="#" class="group block cursor-pointer reveal" style="transition-delay: 0.1s;">
+                <div class="overflow-hidden rounded-2xl shadow-xl aspect-[4/3] relative mb-6">
+                    <img src="images/ui-project-2.jpg" alt="Second Project" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 group-hover:opacity-90">
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
+                        Dashboard
+                    </div>
+                </div>
+                <div class="border-b border-gray-200 pb-4 group-hover:border-black transition duration-300">
+                    <div class="flex justify-between items-end mb-2">
+                        <h2 class="text-3xl font-serif font-bold group-hover:text-yellow-600 transition">Travel Dashboard</h2>
+                        <span class="text-gray-300 font-serif text-4xl italic group-hover:text-black transition">02</span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        為旅遊業者打造的數據視覺化管理後台。
+                    </p>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-50 py-12 text-center border-t border-gray-200">
+        <p class="text-[10px] text-gray-400 uppercase tracking-widest">© Solution Lab, 2026</p>
+    </footer>
+
+    <script>
+        // 簡單的滾動特效
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+    </script>
+</body>
+</html>
