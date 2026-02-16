@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Title | Radko Portfolio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 繼承首頁的全域設定 */
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFCF8;
+            cursor: default;
+        }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+
+        /* 滾動出現特效 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 圖片放大特效 */
+        .zoom-img {
+            transition: transform 0.5s ease;
+        }
+        .zoom-img:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+
+<body class="bg-[#FDFCF8] text-gray-800 antialiased overflow-x-hidden pt-20">
+
+    <nav class="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md border-b border-white/20 transition-all duration-300">
+        <div class="flex justify-between items-center py-4 px-6 md:px-12 max-w-7xl mx-auto">
+            <a href="index.html" class="text-2xl font-bold serif tracking-wider hover:opacity-70 transition">Solution Lab</a>
+            
+            <div class="space-x-8 text-sm font-medium text-gray-600 hidden md:block">
+                <a href="index.html#about" class="hover:text-black hover:underline underline-offset-4 transition">關於我</a>
+                <a href="index.html#research" class="hover:text-black hover:underline underline-offset-4 transition">學術研究</a>
+                <a href="index.html#projects" class="hover:text-black hover:underline underline-offset-4 transition">設計專案</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-20 pb-16 px-6 max-w-5xl mx-auto text-center">
+        <div class="reveal">
+            <span class="text-sm font-bold tracking-widest text-gray-400 uppercase mb-4 block">UI/UX Design</span>
+            <h1 class="text-5xl md:text-7xl font-bold serif text-gray-900 mb-
