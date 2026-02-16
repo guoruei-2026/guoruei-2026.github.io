@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX Collection | Solution Lab</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #FDFCF8; }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+
+        /* 切換時的淡入動畫 */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="antialiased text-gray-800 pt-20">
+
+    <nav class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+        <div class="flex justify-between items-center py-4 px-6 md:px-12 max-w-7xl mx-auto">
+            <a href="index.html" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-gray-500 transition">
+                ← Back to Home
+            </a>
+            <span class="text-xs text-gray-400">UI/UX Collection</span>
+        </div>
+    </nav>
+
+    <header class="pt-24 pb-12 px-6 text-center max-w-4xl mx-auto">
+        <span class="text-yellow-600 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Selected Works</span>
+        <h1 class="text-4xl md:text-6xl font-bold serif text-gray-900 mb-12">UI/UX Projects</h1>
+
+        <div class="flex justify-center gap-4 bg-gray-100 p-2 rounded-full w-fit mx-auto">
+            <button onclick="switchTab('project1')" id="btn-project1" class="px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 bg-black text-white shadow-lg">
+                Fintech App
+            </button>
+            <button onclick="switchTab('project2')" id="btn-project2" class="px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 text-gray-500 hover:bg-white hover:shadow-sm">
+                Travel Dashboard
+            </button>
+        </div>
+    </header>
+
+    <div id="project1" class="tab-content fade-in">
+        
+        <div class="max-w-6xl mx-auto px-6 mb-16">
+            <div class="aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-2xl">
+                <img src="images/dimension-01.png" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <main class="max-w-3xl mx-auto px-6 pb-24 space-y-16">
+            <section>
+                <h2 class="text-3xl font-bold serif mb-6">The Challenge (Fintech)</h2>
+                <p class="text-gray-600 leading-loose text-lg">
+                    (這是 Fintech 的內容) 原有的 APP 介面過於老舊，資訊層級混亂，導致新用戶在進行「首次轉帳」時的失敗率高達 25%。
+                </p>
+            </section>
+            <section>
+                <h2 class="text-3xl font-bold serif mb-6">The Solution</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://via.placeholder.com/400x300" class="rounded-lg shadow-md">
+                    <img src="https://via.placeholder.com/400x300" class="rounded-lg shadow-md">
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="project2" class="tab-content hidden fade-in">
+        
+        <div class="max-w-6xl mx-auto px-6 mb-16">
+            <div class="aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-2xl">
+                <img src="images/ui-project-2.jpg" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <main class="max-w-3xl mx-auto px-6 pb-24 space-y-16">
+            <section>
+                <h2 class="text-3xl font-bold serif mb-6">The Challenge (Travel)</h2>
+                <p class="text-gray-600 leading-loose text-lg">
+                    (這是 Travel 的內容) 旅遊業者需要處理大量的訂單數據，但舊版後台缺乏視覺化圖表，導致決策效率低落。
+                </p>
+            </section>
+            <section>
+                <h2 class="text-3xl font-bold serif mb-6">Dashboard Design</h2>
+                <div class="bg-gray-100 p-8 rounded-xl text-center">
+                    <p class="text-gray-500">這裡放 Dashboard 的介面大圖</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="bg-[#1a1a1a] text-white py-12 text-center mt-auto">
+        <p class="text-[10px] text-gray-500 uppercase tracking-widest">© Solution Lab, 2026</p>
+    </footer>
+
+    <script>
+        function switchTab(tabName) {
+            // 1. 隱藏所有內容
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // 2. 移除所有按鈕的「啟用狀態」樣式 (變回灰色)
+            document.getElementById('btn-project1').className = "px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 text-gray-500 hover:bg-white hover:shadow-sm";
+            document.getElementById('btn-project2').className = "px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 text-gray-500 hover:bg-white hover:shadow-sm";
+
+            // 3. 顯示被點擊的內容
+            document.getElementById(tabName).classList.remove('hidden');
+
+            // 4. 設定被點擊按鈕的「啟用狀態」樣式 (變黑色)
+            const activeBtnClass = "px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 bg-black text-white shadow-lg";
+            document.getElementById('btn-' + tabName).className = activeBtnClass;
+            
+            // 5. 滾動回頂部 (選用，讓閱讀體驗更好)
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
