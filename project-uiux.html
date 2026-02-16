@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Projects | Solution Lab</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a; /* 預設背景改為黑色，避免切換時閃白 */
+            color: #333;
+        }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+
+        /* 淡入動畫 */
+        .fade-in {
+            animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="antialiased overflow-x-hidden selection:bg-yellow-500 selection:text-white">
+
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#1a1a1a]/90 backdrop-blur-md border-b border-white/10 text-white transition-all duration-300">
+        <div class="flex justify-between items-center py-4 px-6 md:px-12 max-w-7xl mx-auto">
+            <a href="index.html" class="text-sm font-bold tracking-widest uppercase hover:text-gray-400 transition flex items-center gap-2">
+                ← Back to Home
+            </a>
+            
+            <div class="flex bg-black/50 p-1 rounded-full border border-white/20 backdrop-blur-md">
+                <button onclick="switchProject('project1')" id="btn-project1" class="px-6 py-2 rounded-full text-xs font-bold transition-all duration-300 bg-white text-black shadow-lg">
+                    FINTECH
+                </button>
+                <button onclick="switchProject('project2')" id="btn-project2" class="px-6 py-2 rounded-full text-xs font-bold transition-all duration-300 text-gray-400 hover:text-white">
+                    TRAVEL
+                </button>
+            </div>
+            
+        </div>
+    </nav>
+
+    <div id="project1" class="tab-content fade-in w-full bg-[#FDFCF8]">
+        
+        <header class="bg-[#1a1a1a] text-white pt-40 pb-24 px-6 rounded-b-[3rem] relative z-10">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <span class="text-yellow-500 text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Case Study 01</span>
+                <h1 class="text-5xl md:text-7xl font-bold serif mb-8 leading-tight">
+                    Simplifying the <br> Payment Experience
+                </h1>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-light">
+                    透過重新梳理資訊架構與優化視覺層級，我們將轉帳流程縮短了 40%。
+                </p>
+            </div>
+            <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 border-t border-gray-800 pt-10 reveal" style="transition-delay: 0.1s;">
+                <div><h4 class="text-[10px] text-gray-500 uppercase tracking-widest mb-2">Role</h4><p class="font-serif text-lg">Lead UI</p></div>
+                <div><h4 class="text-[10px] text-gray-500 uppercase tracking-widest mb-2">Time</h4><p class="font-serif text-lg">3 Months</p></div>
+                <div><h4 class="text-[10px] text-gray-500 uppercase tracking-widest mb-2">Tools</h4><p class="font-serif text-lg">Figma</p></div>
+                <div><h4 class="text-[10px] text-gray-500 uppercase tracking-widest mb-2">Team</h4><p class="font-serif text-lg">PM, Eng</p></div>
+            </div>
+        </header>
+
+        <div class="max-w-6xl mx-auto px-6 -mt-16 relative z-20 reveal" style="transition-delay: 0.2s;">
+            <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white aspect-video bg-gray-200">
+                <img src="images/dimension-01.png" alt="Fintech Hero" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <main class="max-w-3xl mx-auto px-6 py-32 space-y-32 text-gray-800">
+            <section class="reveal">
+                <h2 class="text-3xl font-bold serif mb-6 text-black">01. The Challenge</h2>
+                <p class="text-gray-600 leading-loose text-lg mb-8">
+                    原有的 APP 介面過於老舊，資訊層級混亂，導致新用戶在進行「首次轉帳」時的失敗率高達 25%。我們的挑戰是如何在極簡化操作的同時，保持金融產品的信任感。
+                </p>
+            </section>
+            
+            <section class="reveal">
+                <h2 class="text-3xl font-bold serif mb-10 text-black text-center">02. Design Process</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <img src="https://via.placeholder.com/600x400?text=Wireframe+A" class="rounded-xl shadow-lg hover:scale-[1.02] transition duration-500">
+                    <img src="https://via.placeholder.com/600x400?text=UI+Draft+B" class="rounded-xl shadow-lg hover:scale-[1.02] transition duration-500 md:mt-12">
+                </div>
+            </section>
+        </main>
+
+        <section class="bg-gray-100 py-24 reveal text-gray-800">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold serif mb-12 text-black">Results & Impact</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
+                        <span class="block text-4xl font-bold text-green-600 mb-2">+40%</span>
+                        <span class="text-sm text-gray-500 uppercase tracking-widest">Efficiency</span>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
+                        <span class="block text-4xl font-bold text-green-600 mb-2">-25%</span>
+                        <span class="text-sm text-gray-500 uppercase tracking-widest">Drop-off</span>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
+                        <span class="block text-4xl font-bold text-green-600 mb-2">4.8</span>
+                        <span class="text-sm text-gray-500 uppercase tracking-widest">Rating</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="project2" class="tab-content hidden fade-in w-full bg-[#FDFCF8]">
+        
+        <header class="bg-[#1a1a1a] text-white pt-40 pb-24 px-6 rounded-b-[3rem] relative z-10">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <span class="text-blue-400 text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Case Study 02</span>
+                <h1 class="text-5xl md:text-7xl font-bold serif mb-8 leading-tight">
+                    Travel Agency <br> Dashboard
+                </h1>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-light">
+                    為旅遊業者打造的一站式數據管理後台，將複雜的訂單數據轉化為直觀的決策圖表。
+                </p>
+            </div>
+            <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 border-t border-gray-800 pt-10 reveal">
+                <div><h4 class="text-[10px] text-gray-500 uppercase tracking-widest mb-2">Role</h4><p class="font-serif text-lg">Product Designer</p></div>
+                <div><h4 class="text-[10px] text-gray-500 uppercase tracking-widest mb-2">Time</h4><p class="font-serif text-lg">2 Months</p></div>
+                <div><h4 class="text-[10px] text-gray-500 uppercase tracking-widest mb-2">Tools</h4><p class="font-serif text-lg">Figma, Tableau</p></div>
+                <div><h4 class="text-[10px] text-gray-500 uppercase tracking-widest mb-2">Team</h4><p class="font-serif text-lg">Solo Project</p></div>
+            </div>
+        </header>
+
+        <div class="max-w-6xl mx-auto px-6 -mt-16 relative z-20 reveal">
+            <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white aspect-video bg-gray-200">
+                <img src="images/ui-project-2.jpg" alt="Travel Hero" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <main class="max-w-3xl mx-auto px-6 py-32 space-y-32 text-gray-800">
+            <section class="reveal">
+                <h2 class="text-3xl font-bold serif mb-6 text-black">01. The Problem</h2>
+                <p class="text-gray-600 leading-loose text-lg mb-8">
+                    旅遊業者每天需要處理上百筆訂單，舊有的 Excel 表格難以即時追蹤業績，且無法直觀地看出熱門旅遊路線的趨勢變化。
+                </p>
+            </section>
+
+            <section class="reveal">
+                <h2 class="text-3xl font-bold serif mb-10 text-black text-center">02. Visualization</h2>
+                <div class="bg-gray-100 p-8 rounded-2xl border border-gray-200">
+                    <img src="https://via.placeholder.com/800x500?text=Dashboard+UI" class="w-full h-auto rounded shadow-sm">
+                    <p class="text-center text-sm text-gray-500 mt-4">Dashboard Overview Design</p>
+                </div>
+            </section>
+        </main>
+
+        <section class="bg-gray-100 py-24 reveal text-gray-800">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold serif mb-12 text-black">Project Outcome</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
+                        <span class="block text-4xl font-bold text-blue-600 mb-2">2x</span>
+                        <span class="text-sm text-gray-500 uppercase tracking-widest">Processing Speed</span>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
+                        <span class="block text-4xl font-bold text-blue-600 mb-2">-60%</span>
+                        <span class="text-sm text-gray-500 uppercase tracking-widest">Error Rate</span>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
+                        <span class="block text-4xl font-bold text-blue-600 mb-2">100%</span>
+                        <span class="text-sm text-gray-500 uppercase tracking-widest">Digitalized</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="bg-[#1a1a1a] text-white py-32 px-6 text-center mt-auto">
+        <div class="reveal">
+            <p class="text-gray-500 text-xs tracking-widest uppercase mb-6">Let's Connect</p>
+            <a href="mailto:hello@radko.com" class="inline-block border-b border-gray-600 pb-2 hover:text-gray-300 hover:border-white transition">
+                <h2 class="text-3xl md:text-4xl font-serif">hello@radko.com</h2>
+            </a>
+            <div class="mt-20 text-[10px] text-gray-600 uppercase tracking-widest">
+                © Solution Lab, 2026
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchProject(projectId) {
+            // 1. 隱藏所有專案內容
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // 2. 顯示被選中的專案
+            document.getElementById(projectId).classList.remove('hidden');
+
+            // 3. 更新按鈕樣式
+            const btn1 = document.getElementById('btn-project1');
+            const btn2 = document.getElementById('btn-project2');
+            
+            // 定義樣式
+            const activeStyle = "px-6 py-2 rounded-full text-xs font-bold transition-all duration-300 bg-white text-black shadow-lg";
+            const inactiveStyle = "px-6 py-2 rounded-full text-xs font-bold transition-all duration-300 text-gray-400 hover:text-white";
+
+            if (projectId === 'project1') {
+                btn1.className = activeStyle;
+                btn2.className = inactiveStyle;
+            } else {
+                btn1.className = inactiveStyle;
+                btn2.className = activeStyle;
+            }
+
+            // 4. 滾動回頂部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+    </script>
+</body>
+</html>
