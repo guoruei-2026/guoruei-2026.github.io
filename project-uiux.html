@@ -221,7 +221,62 @@
             </div>
         </section>
 
-    </div>     <footer class="relative bg-[#FDFCF8] py-24 px-6 text-center overflow-hidden">
+<section id="projects" class="bg-[#1a1a1a] text-white py-32 px-6 relative z-10 rounded-t-[3rem] mt-40 scroll-mt-28 w-full">
+    
+    <div class="text-center mb-20 reveal">
+        <h2 class="text-4xl md:text-6xl serif mb-4">The Solution is...</h2>
+        <p class="text-gray-400 text-sm tracking-widest uppercase">Select a Dimension</p>
+    </div>
+
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+        
+        <a href="project-uiux.html" class="group cursor-pointer project-card reveal block">
+            <div class="flex justify-between items-end mb-4 border-b border-gray-700 pb-2">
+                <div class="font-serif text-2xl text-white">UI/UX</div>
+                <div class="text-xs text-gray-500">01</div>
+            </div>
+            <div class="bg-gray-800 rounded-2xl overflow-hidden aspect-[9/16] relative border border-gray-700 shadow-2xl">
+                <img src="images/dimension-01.png" class="w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-105" alt="UI/UX">
+                <div class="overlay absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                    <span class="text-xs font-bold bg-white text-black w-max px-2 py-1 mb-2">APP & Website</span>
+                    <p class="text-sm text-gray-200">Make UI follow UX.</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="project-uiux-collection.html" class="group cursor-pointer mt-0 md:-mt-12 project-card reveal block" style="transition-delay: 0.1s;"> 
+            <div class="flex justify-between items-end mb-4 border-b border-gray-700 pb-2">
+                <div class="font-serif text-2xl text-white">Product</div>
+                <div class="text-xs text-gray-500">02</div>
+            </div>
+            <div class="bg-gray-800 rounded-2xl overflow-hidden aspect-[9/16] relative border border-gray-700 shadow-2xl">
+                <img src="images/dimension-03.png" class="w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-105" alt="Product">
+                <div class="overlay absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                    <span class="text-xs font-bold bg-white text-black w-max px-2 py-1 mb-2">Service and Design</span>
+                    <p class="text-sm text-gray-200">The product from the user's perspective.</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="project01.html" class="group cursor-pointer project-card reveal block" style="transition-delay: 0.2s;">
+            <div class="flex justify-between items-end mb-4 border-b border-gray-700 pb-2">
+                <div class="font-serif text-2xl text-white">Visual</div>
+                <div class="text-xs text-gray-500">03</div>
+            </div>
+            <div class="bg-gray-800 rounded-2xl overflow-hidden aspect-[9/16] relative border border-gray-700 shadow-2xl">
+                <img src="images/dimension-02.png" class="w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-105" alt="Visual">
+                <div class="overlay absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                    <span class="text-xs font-bold bg-white text-black w-max px-2 py-1 mb-2">Visual Communication</span>
+                    <p class="text-sm text-gray-200">Connecting Users with the Brand.
+                    </p>
+                </div>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+    <footer class="relative bg-[#FDFCF8] py-24 px-6 text-center overflow-hidden">
         <div class="relative z-10 reveal">
             <h2 class="text-4xl md:text-6xl font-bold text-gray-800 mb-6 tracking-tight">
                 Your Vision, My Solution.
@@ -234,7 +289,6 @@
             </div>
         </div>
     </footer>
-    
     <script>
         const revealElements = document.querySelectorAll('.reveal');
         const revealOnScroll = () => {
