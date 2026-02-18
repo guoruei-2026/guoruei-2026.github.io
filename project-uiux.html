@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     
     <style>
-        html { scroll-behavior: smooth; }
+        /* 解決固定導航欄遮擋錨點標題的問題 */
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: 80px; 
+        }
         body { font-family: 'Inter', sans-serif; background-color: #FDFCF8; }
         h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
 
@@ -39,8 +43,7 @@
         </div>
     </nav>
 
-    <div id="project-fintech" class="scroll-mt-20">
-        
+    <div id="project-fintech">
         <header class="bg-[#1a1a1a] text-white pt-40 pb-24 px-6 rounded-b-[3rem] relative z-10">
             <div class="max-w-4xl mx-auto text-center reveal">
                 <span class="text-yellow-500 text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Case Study 01</span>
@@ -83,38 +86,22 @@
 
             <section class="reveal">
                 <h2 class="text-3xl font-bold serif mb-6 text-gray-900">02. Design Process</h2>
+                
+
+[Image of user journey map diagram]
+
                 <p class="text-gray-600 leading-loose text-lg mb-8">
                     我們首先繪製了 User Journey Map，並針對 10 位目標用戶進行了易用性測試。草圖階段，我們嘗試了三種不同的導航結構。
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-2">
-                        <img src="https://via.placeholder.com/600x400?text=Sketches" class="rounded-xl shadow-lg hover:scale-[1.02] transition duration-500">
+                        <img src="https://via.placeholder.com/600x400?text=Sketches" class="rounded-xl shadow-lg hover:scale-[1.02] transition duration-500" alt="Sketches">
                         <p class="text-xs text-center text-gray-400 mt-2">初期手繪草稿</p>
                     </div>
                     <div class="space-y-2 md:mt-12">
-                        <img src="https://via.placeholder.com/600x400?text=Wireframe" class="rounded-xl shadow-lg hover:scale-[1.02] transition duration-500">
+                        <img src="https://via.placeholder.com/600x400?text=Wireframe" class="rounded-xl shadow-lg hover:scale-[1.02] transition duration-500" alt="Wireframe">
                         <p class="text-xs text-center text-gray-400 mt-2">低保真原型測試</p>
                     </div>
-                </div>
-            </section>
-
-            <section class="reveal">
-                <h2 class="text-3xl font-bold serif mb-10 text-gray-900 text-center">03. The Solution</h2>
-                <div class="mb-20">
-                    <div class="flex items-center gap-4 mb-6">
-                        <span class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold">A</span>
-                        <h3 class="text-xl font-bold">一鍵式轉帳首頁</h3>
-                    </div>
-                    <p class="text-gray-600 mb-6">將最常用的轉帳對象設為快捷鍵，並將餘額顯示視覺化。</p>
-                    <img src="https://via.placeholder.com/800x600?text=UI+Screen+1" class="w-full rounded-xl shadow-2xl">
-                </div>
-                <div>
-                    <div class="flex items-center gap-4 mb-6">
-                        <span class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold">B</span>
-                        <h3 class="text-xl font-bold">清晰的交易明細</h3>
-                    </div>
-                    <p class="text-gray-600 mb-6">運用色彩區分支出與收入，並引入圖表分析功能。</p>
-                    <img src="https://via.placeholder.com/800x600?text=UI+Screen+2" class="w-full rounded-xl shadow-2xl">
                 </div>
             </section>
         </main>
@@ -138,8 +125,9 @@
                 </div>
             </div>
         </section>
-    </div> <div id="project-travel" class="scroll-mt-20 -mt-12 relative z-10">
-        
+    </div>
+
+    <div id="project-travel" class="mt-20">
         <header class="bg-[#1a1a1a] text-white pt-40 pb-24 px-6 rounded-t-[3rem] rounded-b-[3rem] relative z-10 shadow-[0_-20px_40px_rgba(0,0,0,0.2)]">
             <div class="max-w-4xl mx-auto text-center reveal">
                 <span class="text-blue-400 text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Case Study 02</span>
@@ -163,44 +151,7 @@
                 <img src="images/ui-project-2.jpg" alt="Travel Hero" class="w-full h-full object-cover">
             </div>
         </div>
-
-        <main class="max-w-3xl mx-auto px-6 py-32 space-y-32">
-            <section class="reveal">
-                <h2 class="text-3xl font-bold serif mb-6 text-gray-900">01. The Challenge</h2>
-                <p class="text-gray-600 leading-loose text-lg mb-8">
-                    旅遊業者每天需要處理上百筆訂單，舊有的 Excel 表格難以即時追蹤業績，且無法直觀地看出熱門旅遊路線的趨勢變化。
-                </p>
-                <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
-                     <h4 class="font-bold text-blue-800 mb-2">核心痛點：</h4>
-                     <ul class="list-disc list-inside text-blue-700 space-y-1">
-                         <li>數據分散，無法交叉比對。</li>
-                         <li>報表製作耗時。</li>
-                         <li>缺乏視覺化決策輔助。</li>
-                     </ul>
-                </div>
-            </section>
-
-            <section class="reveal">
-                <h2 class="text-3xl font-bold serif mb-6 text-gray-900">02. Design Process</h2>
-                <p class="text-gray-600 leading-loose text-lg mb-8">
-                    我們訪談了 5 位旅遊經理，釐清了他們的每日工作流程，並定義了關鍵數據指標 (KPIs)。
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <img src="https://via.placeholder.com/600x400?text=Research" class="rounded-xl shadow-lg hover:scale-[1.02] transition duration-500">
-                    <img src="https://via.placeholder.com/600x400?text=Dashboard+Wireframe" class="rounded-xl shadow-lg hover:scale-[1.02] transition duration-500 md:mt-12">
-                </div>
-            </section>
-
-            <section class="reveal">
-                <h2 class="text-3xl font-bold serif mb-10 text-gray-900 text-center">03. The Solution</h2>
-                <div class="mb-20">
-                    <h3 class="text-xl font-bold mb-4">數據總覽儀表板</h3>
-                    <p class="text-gray-600 mb-6">一目了然的業績趨勢圖，支援即時篩選與導出。</p>
-                    <img src="https://via.placeholder.com/800x600?text=Dashboard+UI" class="w-full rounded-xl shadow-2xl">
-                </div>
-            </section>
-        </main>
-
+        
         <section class="bg-gray-100 py-24 reveal">
             <div class="max-w-4xl mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold serif mb-12 text-gray-900">Impact & Results</h2>
@@ -220,67 +171,32 @@
                 </div>
             </div>
         </section>
-
-<<<<<<< HEAD
-<section id="projects" class="bg-[#1a1a1a] text-white py-32 px-6 relative z-10 rounded-t-[3rem] mt-40 scroll-mt-28 w-full">
-    
-    <div class="text-center mb-20 reveal">
-        <h2 class="text-4xl md:text-6xl serif mb-4">The Solution is...</h2>
-        <p class="text-gray-400 text-sm tracking-widest uppercase">Select a Dimension</p>
     </div>
 
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-        
-        <a href="project-uiux.html" class="group cursor-pointer project-card reveal block">
-            <div class="flex justify-between items-end mb-4 border-b border-gray-700 pb-2">
-                <div class="font-serif text-2xl text-white">UI/UX</div>
-                <div class="text-xs text-gray-500">01</div>
-            </div>
-            <div class="bg-gray-800 rounded-2xl overflow-hidden aspect-[9/16] relative border border-gray-700 shadow-2xl">
-                <img src="images/dimension-01.png" class="w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-105" alt="UI/UX">
-                <div class="overlay absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
-                    <span class="text-xs font-bold bg-white text-black w-max px-2 py-1 mb-2">APP & Website</span>
-                    <p class="text-sm text-gray-200">Make UI follow UX.</p>
+    <section id="projects" class="bg-[#1a1a1a] text-white py-32 px-6 relative z-10 rounded-t-[3rem] mt-40 w-full">
+        <div class="text-center mb-20 reveal">
+            <h2 class="text-4xl md:text-6xl serif mb-4">The Solution is...</h2>
+            <p class="text-gray-400 text-sm tracking-widest uppercase">Select a Dimension</p>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+            <a href="project-uiux.html" class="group cursor-pointer project-card reveal block">
+                <div class="flex justify-between items-end mb-4 border-b border-gray-700 pb-2">
+                    <div class="font-serif text-2xl text-white">UI/UX</div>
+                    <div class="text-xs text-gray-500">01</div>
                 </div>
-            </div>
-        </a>
-
-        <a href="project-uiux-collection.html" class="group cursor-pointer mt-0 md:-mt-12 project-card reveal block" style="transition-delay: 0.1s;"> 
-            <div class="flex justify-between items-end mb-4 border-b border-gray-700 pb-2">
-                <div class="font-serif text-2xl text-white">Product</div>
-                <div class="text-xs text-gray-500">02</div>
-            </div>
-            <div class="bg-gray-800 rounded-2xl overflow-hidden aspect-[9/16] relative border border-gray-700 shadow-2xl">
-                <img src="images/dimension-03.png" class="w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-105" alt="Product">
-                <div class="overlay absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
-                    <span class="text-xs font-bold bg-white text-black w-max px-2 py-1 mb-2">Service and Design</span>
-                    <p class="text-sm text-gray-200">The product from the user's perspective.</p>
+                <div class="bg-gray-800 rounded-2xl overflow-hidden aspect-[9/16] relative border border-gray-700 shadow-2xl">
+                    <img src="images/dimension-01.png" class="w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-105" alt="UI/UX">
+                    <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                        <span class="text-xs font-bold bg-white text-black w-max px-2 py-1 mb-2">APP & Website</span>
+                        <p class="text-sm text-gray-200">Make UI follow UX.</p>
+                    </div>
                 </div>
+            </a>
             </div>
-        </a>
+    </section>
 
-        <a href="project01.html" class="group cursor-pointer project-card reveal block" style="transition-delay: 0.2s;">
-            <div class="flex justify-between items-end mb-4 border-b border-gray-700 pb-2">
-                <div class="font-serif text-2xl text-white">Visual</div>
-                <div class="text-xs text-gray-500">03</div>
-            </div>
-            <div class="bg-gray-800 rounded-2xl overflow-hidden aspect-[9/16] relative border border-gray-700 shadow-2xl">
-                <img src="images/dimension-02.png" class="w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-105" alt="Visual">
-                <div class="overlay absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
-                    <span class="text-xs font-bold bg-white text-black w-max px-2 py-1 mb-2">Visual Communication</span>
-                    <p class="text-sm text-gray-200">Connecting Users with the Brand.
-                    </p>
-                </div>
-            </div>
-        </a>
-
-    </div>
-</section>
-
-    <footer class="relative bg-[#FDFCF8] py-24 px-6 text-center overflow-hidden">
-=======
-    </div>     <footer class="relative bg-[#FDFCF8] py-24 px-6 text-center overflow-hidden">
->>>>>>> 31a11b3ef91a311b1df65d62498f3a110f7f15a3
+    <footer class="relative bg-[#FDFCF8] py-24 px-6 text-center">
         <div class="relative z-10 reveal">
             <h2 class="text-4xl md:text-6xl font-bold text-gray-800 mb-6 tracking-tight">
                 Your Vision, My Solution.
@@ -293,23 +209,22 @@
             </div>
         </div>
     </footer>
-<<<<<<< HEAD
-=======
-    
->>>>>>> 31a11b3ef91a311b1df65d62498f3a110f7f15a3
+
     <script>
         const revealElements = document.querySelectorAll('.reveal');
         const revealOnScroll = () => {
             const windowHeight = window.innerHeight;
             revealElements.forEach((reveal) => {
                 const elementTop = reveal.getBoundingClientRect().top;
+                // 如果元素已經在畫面內，或捲動到位置，則觸發
                 if (elementTop < windowHeight - 50) {
                     reveal.classList.add('active');
                 }
             });
         };
         window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
+        // 初始化檢查一次
+        window.addEventListener('load', revealOnScroll);
     </script>
 </body>
 </html>
