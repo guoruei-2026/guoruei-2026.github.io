@@ -69,6 +69,7 @@
         </div>
 
         <main class="max-w-3xl mx-auto px-6 py-32 space-y-32">
+            
             <section class="reveal">
                 <h2 class="text-3xl font-bold serif mb-6 text-gray-900">01. The Challenge</h2>
                 <p class="text-gray-600 leading-loose text-lg mb-8">
@@ -85,18 +86,20 @@
             </section>
 
             <section class="reveal">
-                <h2 class="text-3xl font-bold serif mb-6 text-gray-900">02. Design Process</h2>
+                <h2 class="text-3xl font-bold serif mb-6 text-gray-900">02. Research Process</h2>
+                <p class="text-gray-600 leading-loose text-lg mb-8">
+                    為了深入了解用戶在轉帳過程中的行為模式，我們執行了兩階段的研究。首先繪製 User Journey Map 找出情緒低點，接著針對 10 位目標用戶進行易用性測試 (Usability Testing)。
+                </p>
+
                 
 
-[Image of user journey map diagram]
+[Image of user journey map]
 
-                <p class="text-gray-600 leading-loose text-lg mb-8">
-                    我們首先繪製了 User Journey Map，並針對 10 位目標用戶進行了易用性測試。草圖階段，我們嘗試了三種不同的導航結構。
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                     <div class="space-y-2">
                         <img src="https://via.placeholder.com/600x400?text=Sketches" class="rounded-xl shadow-lg hover:scale-[1.02] transition duration-500" alt="Sketches">
-                        <p class="text-xs text-center text-gray-400 mt-2">初期手繪草稿</p>
+                        <p class="text-xs text-center text-gray-400 mt-2">初期手繪草稿與訪談</p>
                     </div>
                     <div class="space-y-2 md:mt-12">
                         <img src="https://via.placeholder.com/600x400?text=Wireframe" class="rounded-xl shadow-lg hover:scale-[1.02] transition duration-500" alt="Wireframe">
@@ -104,6 +107,53 @@
                     </div>
                 </div>
             </section>
+
+            <section class="reveal">
+                <h2 class="text-3xl font-bold serif mb-6 text-gray-900">03. Key Findings</h2>
+                <p class="text-gray-600 leading-loose text-lg mb-6">
+                    經過研究分析，我們歸納出三個影響轉化率的關鍵發現：
+                </p>
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="flex gap-4 items-start bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                        <div class="bg-yellow-100 text-yellow-700 font-bold px-3 py-1 rounded text-sm shrink-0 mt-1">Finding A</div>
+                        <p class="text-gray-700">用戶在輸入帳號時，因為缺乏即時驗證 (Real-time Validation)，產生極大的不安全感。</p>
+                    </div>
+                    <div class="flex gap-4 items-start bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                        <div class="bg-yellow-100 text-yellow-700 font-bold px-3 py-1 rounded text-sm shrink-0 mt-1">Finding B</div>
+                        <p class="text-gray-700">「確認轉帳」頁面的資訊過多，重要資訊（金額、對象）沒有被視覺強調。</p>
+                    </div>
+                    <div class="flex gap-4 items-start bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                        <div class="bg-yellow-100 text-yellow-700 font-bold px-3 py-1 rounded text-sm shrink-0 mt-1">Finding C</div>
+                        <p class="text-gray-700">常用的轉帳對象應該被置頂，而非每次都要重新搜尋。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 class="text-3xl font-bold serif mb-6 text-gray-900">04. Design Guideline</h2>
+                <p class="text-gray-600 leading-loose text-lg mb-8">
+                    基於發現，我們制定了新的設計規範，特別強調視覺動線的引導。下圖為新舊版介面的眼動儀 (Eye-Tracking) 熱點測試對比，顯示新版設計成功將用戶視線集中在關鍵操作按鈕上。
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+                    <div class="group">
+                        <div class="relative overflow-hidden rounded-xl shadow-lg border border-gray-200 aspect-[3/4] bg-gray-100">
+                            <img src="https://via.placeholder.com/400x600?text=Eye+Tracking+Before" alt="Eye Tracking Before" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition duration-500">
+                            <div class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">Before</div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-4 text-center">舊版：視線分散，用戶找不到重點資訊</p>
+                    </div>
+
+                    <div class="group">
+                        <div class="relative overflow-hidden rounded-xl shadow-lg border border-gray-200 aspect-[3/4] bg-gray-100">
+                            <img src="https://via.placeholder.com/400x600?text=Eye+Tracking+After" alt="Eye Tracking After" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition duration-500">
+                            <div class="absolute top-4 left-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">After</div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-4 text-center">新版：視線集中於確認按鈕與金額</p>
+                    </div>
+                </div>
+            </section>
+
         </main>
 
         <section class="bg-gray-100 py-24 reveal rounded-b-[3rem]">
@@ -152,13 +202,56 @@
             </div>
         </div>
         
+        <main class="max-w-3xl mx-auto px-6 py-32 space-y-32">
+            
+            <section class="reveal">
+                <h2 class="text-3xl font-bold serif mb-6 text-gray-900">01. The Challenge</h2>
+                <p class="text-gray-600 leading-loose text-lg mb-8">
+                    傳統旅行社在處理大量訂單與顧客數據時，仍依賴 Excel 與紙本作業，導致資料碎片化，管理者無法即時掌握銷售狀況。業者急需一套能夠整合訂單、會員管理與數據分析的一站式 B2B 後台系統。
+                </p>
+                <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
+                    <p class="text-blue-800 font-medium">目標：透過數位化轉型，減少 50% 的人工作業時間。</p>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2 class="text-3xl font-bold serif mb-12 text-gray-900">02. Platform Functions</h2>
+                
+                <div class="space-y-20">
+                    <div class="flex flex-col md:flex-row gap-10 items-center">
+                        <div class="w-full md:w-1/2 bg-gray-100 rounded-xl aspect-video shadow-md overflow-hidden border border-gray-200 group">
+                            <img src="https://via.placeholder.com/600x400?text=Dashboard+UI" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" alt="Data Dashboard">
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <h3 class="text-2xl font-bold mb-4 text-gray-800">視覺化數據儀表板</h3>
+                            <p class="text-gray-600 leading-relaxed text-lg">
+                                將複雜的銷售報表轉化為直觀的折線圖與圓餅圖。管理者可自定義監控維度（如：季度營收、熱門行程），實現數據驅動決策。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row-reverse gap-10 items-center">
+                        <div class="w-full md:w-1/2 bg-gray-100 rounded-xl aspect-video shadow-md overflow-hidden border border-gray-200 group">
+                            <img src="https://via.placeholder.com/600x400?text=Order+Management" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" alt="Order Management">
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <h3 class="text-2xl font-bold mb-4 text-gray-800">智能訂單管理系統</h3>
+                            <p class="text-gray-600 leading-relaxed text-lg">
+                                引入自動化標籤與狀態追蹤功能。系統會自動偵測未付款或即將到期的訂單，並發送提醒，大幅降低人為漏單機率。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
         <section class="bg-gray-100 py-24 reveal">
             <div class="max-w-4xl mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold serif mb-12 text-gray-900">Impact & Results</h2>
+                <h2 class="text-3xl font-bold serif mb-12 text-gray-900">03. Impact & Results</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="bg-white p-8 rounded-2xl shadow-sm">
                         <span class="block text-4xl font-bold text-blue-600 mb-2">2x</span>
-                        <span class="text-sm text-gray-500 uppercase tracking-widest">Speed</span>
+                        <span class="text-sm text-gray-500 uppercase tracking-widest">Processing Speed</span>
                     </div>
                     <div class="bg-white p-8 rounded-2xl shadow-sm">
                         <span class="block text-4xl font-bold text-blue-600 mb-2">-60%</span>
@@ -173,13 +266,15 @@
         </section>
     </div>
 
-    <section id="projects" class="bg-[#1a1a1a] text-white py-32 px-6 relative z-10 rounded-t-[3rem] mt-40 w-full">
+    <section id="projects" class="bg-[#1a1a1a] text-white py-32 px-6 relative z-10 rounded-t-[3rem] mt-40 scroll-mt-28 w-full">
+        
         <div class="text-center mb-20 reveal">
             <h2 class="text-4xl md:text-6xl serif mb-4">The Solution is...</h2>
             <p class="text-gray-400 text-sm tracking-widest uppercase">Select a Dimension</p>
         </div>
 
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+            
             <a href="project-uiux.html" class="group cursor-pointer project-card reveal block">
                 <div class="flex justify-between items-end mb-4 border-b border-gray-700 pb-2">
                     <div class="font-serif text-2xl text-white">UI/UX</div>
@@ -187,13 +282,44 @@
                 </div>
                 <div class="bg-gray-800 rounded-2xl overflow-hidden aspect-[9/16] relative border border-gray-700 shadow-2xl">
                     <img src="images/dimension-01.png" class="w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-105" alt="UI/UX">
-                    <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                    <div class="overlay absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
                         <span class="text-xs font-bold bg-white text-black w-max px-2 py-1 mb-2">APP & Website</span>
                         <p class="text-sm text-gray-200">Make UI follow UX.</p>
                     </div>
                 </div>
             </a>
-            </div>
+
+            
+            <a href="project-uiux-collection.html" class="group cursor-pointer mt-0 md:-mt-12 project-card reveal block" style="transition-delay: 0.1s;"> 
+                <div class="flex justify-between items-end mb-4 border-b border-gray-700 pb-2">
+                    <div class="font-serif text-2xl text-white">Product</div>
+                    <div class="text-xs text-gray-500">02</div>
+                </div>
+                <div class="bg-gray-800 rounded-2xl overflow-hidden aspect-[9/16] relative border border-gray-700 shadow-2xl">
+                    <img src="images/dimension-03.png" class="w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-105" alt="Product">
+                    <div class="overlay absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                        <span class="text-xs font-bold bg-white text-black w-max px-2 py-1 mb-2">Service and Design</span>
+                        <p class="text-sm text-gray-200">The product from the user's perspective.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="project01.html" class="group cursor-pointer project-card reveal block" style="transition-delay: 0.2s;">
+                <div class="flex justify-between items-end mb-4 border-b border-gray-700 pb-2">
+                    <div class="font-serif text-2xl text-white">Visual</div>
+                    <div class="text-xs text-gray-500">03</div>
+                </div>
+                <div class="bg-gray-800 rounded-2xl overflow-hidden aspect-[9/16] relative border border-gray-700 shadow-2xl">
+                    <img src="images/dimension-02.png" class="w-full h-full object-cover opacity-90 transition duration-500 group-hover:scale-105" alt="Visual">
+                    <div class="overlay absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
+                        <span class="text-xs font-bold bg-white text-black w-max px-2 py-1 mb-2">Visual Communication</span>
+                        <p class="text-sm text-gray-200">Connecting Users with the Brand.
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+        </div>
     </section>
 
     <footer class="relative bg-[#FDFCF8] py-24 px-6 text-center">
