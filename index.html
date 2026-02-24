@@ -157,41 +157,49 @@
         /* ... 原有的 CSS ... */
 
 /* ====================
-   📱 手機端強化效果
+   📱 手機端靜態質感設定
    ==================== */
 @media (max-width: 767px) {
+    /* 確保容器不產生捲軸 */
     .blob-cont {
-        /* 在手機端增加一點點背景偏色，讓 blob 融合得更自然 */
-        background-color: #FDFCF8; 
+        background-color: #FDFCF8;
+        overflow: hidden;
     }
 
     .blob {
+        /* 💡 核心重點：維持高模糊度 (80-100px)，顏色才會散開不噁心 */
+        filter: blur(80px);
+        opacity: 0.6;
         transition: none !important;
-        /* 💡 核心修正：使用 multiply 或 darken 模式 */
-        mix-blend-mode: multiply; 
-        opacity: 0.6; /* 降低不透明度，靠混合模式產生顏色 */
-        filter: blur(60px); 
+        pointer-events: none;
     }
 
     .blob-yellow {
-        width: 280px; height: 280px;
-        top: -5%; left: -10%;
-        background: radial-gradient(circle, #FFE566 0%, rgba(255,229,102,0) 70%);
+        /* 將黃色推到左上角邊緣，露出約一半 */
+        width: 350px; height: 350px;
+        top: -100px; 
+        left: -120px;
+        background: #ffcc00;
         transform: translate(0, 0) !important;
     }
 
     .blob-red {
-        width: 320px; height: 320px;
-        top: 10%; left: 50%;
-        /* 💡 使用徑向漸層，讓中心色濃、邊緣淡，就不會噁心 */
-        background: radial-gradient(circle, #FF8A8A 0%, rgba(255,138,138,0) 70%);
-        transform: translate(-50%, 0) !important;
+        /* 紅色是視覺中心，維持在稍微偏上的位置，墊在標題後方 */
+        width: 400px; height: 400px;
+        top: 0; 
+        left: 50%;
+        background: #c72020;
+        /* 精準置中：向左位移自身一半 */
+        transform: translate(-50%, -20%) !important;
     }
 
     .blob-green {
-        width: 280px; height: 280px;
-        top: -5%; right: -10%;
-        background: radial-gradient(circle, #8CFFB0 0%, rgba(140,255,176,0) 70%);
+        /* 綠色推到右下角，增加畫面的平衡感 */
+        width: 350px; height: 350px;
+        bottom: -50px; 
+        right: -120px;
+        top: auto; /* 取消原本的 top 設定 */
+        background: #01da37;
         transform: translate(0, 0) !important;
     }
 }
