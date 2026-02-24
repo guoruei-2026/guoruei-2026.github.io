@@ -58,10 +58,7 @@
         /* 20s 是滾動一圈的時間，數字越大滾得越慢，可以自行調整 */
         animation: scroll-y-infinite 20s linear infinite; 
     }
-    /* 貼心小設計：滑鼠移上去時，動畫會暫停，方便閱讀 */
-    .comic-window:hover .animate-scroll-y {
-        animation-play-state: paused;
-    }
+   
 </style>
 </head>
 
@@ -276,7 +273,7 @@
         </div>
         
         <div class="comic-window w-full h-[550px] relative overflow-hidden bg-[#1f1f1f] border-y border-[#3f3f46]">
-            <div class="absolute top-0 left-0 w-full animate-scroll-y flex flex-col" style="animation-duration: 45s;">
+            <div class="absolute top-0 left-0 w-full animate-scroll-y flex flex-col" style="animation-duration: 60s;">
                 <img src="images/case 6-02.jpg" class="w-full h-auto block" alt="海倫與查特">
                 <img src="images/case 6-02.jpg" class="w-full h-auto block" alt="海倫與查特">
             </div>
@@ -299,7 +296,7 @@
         </div>
         
         <div class="comic-window w-full h-[550px] relative overflow-hidden bg-[#1f1f1f] border-y border-[#3f3f46]">
-            <div class="absolute top-0 left-0 w-full animate-scroll-y flex flex-col" style="animation-duration: 35s;">
+            <div class="absolute top-0 left-0 w-full animate-scroll-y flex flex-col" style="animation-duration: 45s;">
                 <img src="images/case 6-03.png" class="w-full h-auto block" alt="月光光仙子">
                 <img src="images/case 6-03.png" class="w-full h-auto block" alt="月光光仙子">
             </div>
@@ -316,7 +313,7 @@
     </div>
 
 </div>
-
+ </div>
     <section id="projects" class="bg-[#1a1a1a] text-white py-32 px-6 relative z-10 mt-32 scroll-mt-28 w-full border-t border-white/5">
         <div class="text-center mb-20 reveal">
             <h2 class="text-4xl md:text-6xl serif mb-4">The Solution is...</h2>
