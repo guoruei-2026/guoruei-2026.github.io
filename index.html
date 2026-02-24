@@ -157,47 +157,61 @@
         /* ... 原有的 CSS ... */
 
 /* ====================
-   📱 手機端：單一紅球置中
+   📱 手機端：高彩度滿版重疊
    ==================== */
 @media (max-width: 767px) {
-    /* 1. 乾脆地隱藏黃色跟綠色球 */
-    .blob-yellow, .blob-green {
-        display: none !important;
-    }
-
-    /* 2. 重新定義紅球：巨大、高彩、置中 */
-    .blob-red {
-        /* 💡 尺寸設定：比手機螢幕大，確保暈開後能填滿 */
-        width: 600px;
-        height: 700px;
-
-        /* 💡 定位設定：絕對置中 */
-        top: 50%;
-        left: 50%;
-        /* 利用 translate 將自身中心點對齊螢幕中心點 */
-        transform: translate(-50%, -50%) !important;
-
-        /* 💡 色彩設定：究極高彩度 */
-        background: #FF0000; /* 使用最鮮豔的正紅色 */
-        opacity: 0.95;       /* 拉高不透明度，讓顏色非常紮實 */
-        filter: blur(150px); /* 加大模糊半徑，創造強力暈開效果 */
-
-        /* 關閉所有可能的動畫干擾 */
-        transition: none !important;
-        animation: none !important;
-        pointer-events: none;
-        z-index: -1;
-    }
-
-    /* 3. 確保容器不會出現捲軸 */
+    /* 1. 容器設定：防止過大的色塊撐開頁面 */
     .blob-cont {
         overflow: hidden;
-        background-color: #FDFCF8; /* 露出的一點點邊緣維持米白底色 */
+        background-color: #FDFCF8; /* 底色保留，但會被蓋住 */
     }
 
-    /* 4. 文字可讀性加強：在濃重紅底上，白字需要更強的陰影撐住 */
-    h1.animate-breathe {
-        text-shadow: 0 5px 25px rgba(0,0,0,0.3) !important;
+    /* 2. blob 通用設定：高透明度 + 大模糊 */
+    .blob {
+        transition: none !important;
+        /* 💡 關鍵：提高不透明度到 0.85，讓顏色非常紮實 */
+        opacity: 0.95; 
+        /* 💡 關鍵：加大模糊範圍到 120px，讓重疊處過渡自然，不會有硬邊 */
+        filter: blur(120px);
+        pointer-events: none; /* 確保不擋住點擊 */
+        mix-blend-mode: normal; /* 確保不做奇怪的混合模式，維持原色堆疊 */
+    }
+
+    /* 🟡 鮮黃色：放在左上，巨大化 */
+    .blob-yellow {
+        width: 550px; height: 550px;
+        top: -200px; 
+        left: -250px;
+        background: #FFD700; /* 使用金色/鮮黃 */
+        transform: translate(0, 0) !important;
+        z-index: 1; /* 設定層級 */
+    }
+
+    /* 🔴 鮮紅色：放在右上並往中間擠，與黃色大面積重疊 */
+    .blob-red {
+        width: 600px; height: 600px;
+        top: -150px; 
+        right: -300px;
+        left: auto; 
+        background: #FF3333; /* 使用高亮紅 */
+        transform: translate(0, 0) !important;
+        z-index: 2; /* 紅色蓋在黃色上面，製造鮮豔的橘紅中心 */
+    }
+
+    /* 🟢 鮮綠色：從下方往上填滿，與紅色重疊 */
+    .blob-green {
+        width: 550px; height: 550px;
+        top: auto; 
+        bottom: -200px; 
+        left: -200px;
+        background: #00FF55; /* 使用螢光綠 */
+        transform: translate(0, 0) !important;
+        z-index: 3; /* 綠色在最上層，確保底部色彩跳脫 */
+    }
+
+    /* 3. 文字可讀性加強：因為背景變得很花，文字陰影要加重 */
+    h1.animate-breathe, header p {
+        text-shadow: 0 3px 12px rgba(0,0,0,0.4) !important;
     }
 }
     </style>
