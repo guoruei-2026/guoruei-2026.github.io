@@ -160,48 +160,45 @@
    📱 手機端靜態質感設定
    ==================== */
 @media (max-width: 767px) {
-    /* 確保容器不產生捲軸 */
-    .blob-cont {
-        background-color: #FDFCF8;
-        overflow: hidden;
-    }
-
     .blob {
-        /* 💡 核心重點：維持高模糊度 (80-100px)，顏色才會散開不噁心 */
-        filter: blur(80px);
-        opacity: 0.6;
+        /* 💡 調高一點點不透明度，但把模糊拉大到 100px 以上，讓邊界消失 */
+        filter: blur(100px);
+        opacity: 0.8;
         transition: none !important;
-        pointer-events: none;
     }
 
     .blob-yellow {
-        /* 將黃色推到左上角邊緣，露出約一半 */
-        width: 350px; height: 350px;
-        top: -100px; 
-        left: -120px;
+        /* 黃色縮小，放到左上角當點綴 */
+        width: 250px; height: 250px;
+        top: -50px; left: -80px;
         background: #ffcc00;
         transform: translate(0, 0) !important;
     }
 
     .blob-red {
-        /* 紅色是視覺中心，維持在稍微偏上的位置，墊在標題後方 */
+        /* 🔴 紅色是重點，但不要在正中間！推到右上角 */
         width: 400px; height: 400px;
-        top: 0; 
-        left: 50%;
+        top: -100px; right: -150px;
+        left: auto; /* 取消原本的居中 */
         background: #c72020;
-        /* 精準置中：向左位移自身一半 */
-        transform: translate(-50%, -20%) !important;
+        transform: translate(0, 0) !important;
     }
 
     .blob-green {
-        /* 綠色推到右下角，增加畫面的平衡感 */
-        width: 350px; height: 350px;
-        bottom: -50px; 
-        right: -120px;
-        top: auto; /* 取消原本的 top 設定 */
+        /* 🟢 綠色移到左下角，形成一個對角拉扯感 */
+        width: 400px; height: 400px;
+        top: auto; 
+        bottom: 10%; 
+        left: -100px;
         background: #01da37;
         transform: translate(0, 0) !important;
     }
+
+    /* 💡 加強標題的可閱讀性 */
+    h1.animate-breathe {
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+}
 }
     </style>
 </head>
