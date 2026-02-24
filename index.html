@@ -160,36 +160,41 @@
    📱 手機端強化效果
    ==================== */
 @media (max-width: 767px) {
+    .blob-cont {
+        /* 在手機端增加一點點背景偏色，讓 blob 融合得更自然 */
+        background-color: #FDFCF8; 
+    }
+
     .blob {
         transition: none !important;
-        /* 💡 調整重點：提高不透明度，並稍微減少模糊度讓顏色更濃郁 */
-        opacity: 0.95; 
-        filter: blur(50px); 
+        /* 💡 核心修正：使用 multiply 或 darken 模式 */
+        mix-blend-mode: multiply; 
+        opacity: 0.6; /* 降低不透明度，靠混合模式產生顏色 */
+        filter: blur(60px); 
     }
 
     .blob-yellow {
-        width: 250px; height: 250px;
-        top: 5%; left: -15%;
-        background: #FFD700; /* 使用更鮮豔的金色 */
+        width: 280px; height: 280px;
+        top: -5%; left: -10%;
+        background: radial-gradient(circle, #FFE566 0%, rgba(255,229,102,0) 70%);
         transform: translate(0, 0) !important;
     }
 
     .blob-red {
-        width: 300px; height: 300px;
-        top: 15%; 
-        left: 50%;
-        transform: translate(-50%, 0) !important; /* 讓紅球精準置中在標題後方 */
-        background: #E52E2E; 
+        width: 320px; height: 320px;
+        top: 10%; left: 50%;
+        /* 💡 使用徑向漸層，讓中心色濃、邊緣淡，就不會噁心 */
+        background: radial-gradient(circle, #FF8A8A 0%, rgba(255,138,138,0) 70%);
+        transform: translate(-50%, 0) !important;
     }
 
     .blob-green {
-        width: 250px; height: 250px;
-        top: 8%; right: -15%;
-        background: #00FF41; /* 使用更亮麗的綠色 */
+        width: 280px; height: 280px;
+        top: -5%; right: -10%;
+        background: radial-gradient(circle, #8CFFB0 0%, rgba(140,255,176,0) 70%);
         transform: translate(0, 0) !important;
     }
 }
-
     </style>
 </head>
 
