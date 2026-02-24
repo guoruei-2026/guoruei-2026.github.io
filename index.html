@@ -157,28 +157,44 @@
     </style>
 </head>
 
-<div class="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md border-b border-white/20 transition-all duration-300">
-    
-    <div class="flex justify-start items-center py-4 px-6 md:px-12 max-w-7xl mx-auto gap-x-12">
-        
-        <a href="#" class="flex items-center gap-x-3 group">
-            <div class="w-10 h-10 bg-black rounded-md flex items-center justify-center overflow-hidden">
-                <img src="images/favicon.png" alt="LOGO" class="w-full h-full object-cover">
-            </div>
-            
-            <span class="text-2xl font-bold serif tracking-wider text-black group-hover:opacity-70 transition">
-                Solution Lab
-            </span>
-        </a>
+<body class="bg-[#FDFCF8] text-gray-800 antialiased overflow-x-hidden pt-20">
 
-        <div class="flex space-x-8 text-lg font-bold text-black hidden md:flex">
-            <a href="#about" class="hover:opacity-60 hover:underline underline-offset-8 transition">關於我</a>
-            <a href="#research" class="hover:opacity-60 hover:underline underline-offset-8 transition">學術研究</a>
-            <a href="#projects" class="hover:opacity-60 hover:underline underline-offset-8 transition">設計專案</a>
+    <div class="blob-cont">
+        <div class="blob blob-yellow" data-speed="2"></div>
+        <div class="blob blob-red" data-speed="0.2"></div> 
+        <div class="blob blob-green" data-speed="1.5"></div>
+    </div>
+
+<nav class="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md border-b border-white/20 transition-all duration-300">
+        <div class="flex justify-start items-center py-4 px-6 md:px-12 max-w-7xl mx-auto gap-x-12">
+            
+            <a href="#" class="flex items-center gap-x-3 text-2xl font-bold serif tracking-wider hover:opacity-70 transition">
+                <img src="images/favicon.png" alt="Logo" class="h-8 w-auto">
+                <span class="text-black">Solution Lab</span>
+            </a>
+
+            <div class="space-x-8 text-base font-semibold text-black hidden md:block">
+                <a href="#about" class="hover:opacity-60 hover:underline underline-offset-4 transition">關於我</a>
+                <a href="#research" class="hover:opacity-60 hover:underline underline-offset-4 transition">學術研究</a>
+                <a href="#projects" class="hover:opacity-60 hover:underline underline-offset-4 transition">設計專案</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative z-10 text-center pt-20 pb-32 px-4 min-h-[80vh] flex flex-col justify-center">
+        
+        <div class="mb-8 flex justify-center">
+            <div class="plus-effect">
+                <span id="rotating-cross" class="cross-icon text-white text-5xl font-light inline-block">+</span> 
+            </div>
         </div>
         
-    </div>
-</div>
+        <div class="reveal">
+            <h1 class="animate-breathe text-6xl md:text-8xl font-bold text-white mb-6 tracking-wide drop-shadow-sm leading-tight">
+                Solution Lab
+            </h1>
+        </div>
+
         <div class="reveal" style="transition-delay: 0.1s;"> 
             <p class="text-white antialiased max-w-xl mx-auto leading-relaxed">
             洞察需求並執行方案，在「使用者體驗」與「開發可行性」之間找到完美的平衡點。
