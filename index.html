@@ -170,7 +170,7 @@
     .blob {
         transition: none !important;
         /* 💡 關鍵：提高不透明度到 0.85，讓顏色非常紮實 */
-        opacity: 0.95; 
+        opacity: 0.98; 
         /* 💡 關鍵：加大模糊範圍到 120px，讓重疊處過渡自然，不會有硬邊 */
         filter: blur(120px);
         pointer-events: none; /* 確保不擋住點擊 */
@@ -204,7 +204,7 @@
         top: auto; 
         bottom: -200px; 
         left: -200px;
-        background: #00FF55; /* 使用螢光綠 */
+        background: #2cc960; /* 使用螢光綠 */
         transform: translate(0, 0) !important;
         z-index: 3; /* 綠色在最上層，確保底部色彩跳脫 */
     }
@@ -213,7 +213,14 @@
     h1.animate-breathe, header p {
         text-shadow: 0 3px 12px rgba(0,0,0,0.4) !important;
     }
+    /* --- 拿掉滾動出現效果：讓內容直接顯示 --- */
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
 }
+
     </style>
 </head>
 
