@@ -154,6 +154,38 @@
             transform: translateY(0);
         }
 
+        /* ... 原有的 CSS ... */
+
+/* ====================
+   📱 手機端固定效果 (RWD)
+   ==================== */
+@media (max-width: 767px) {
+    .blob {
+        /* 手機端取消過渡動畫，避免與滾動衝突 */
+        transition: none !important;
+        opacity: 0.5; /* 手機端稍微調淡，避免干擾閱讀 */
+        filter: blur(80px); /* 模糊度稍微調小 */
+    }
+
+    .blob-yellow {
+        width: 300px; height: 300px;
+        top: 5%; left: -20%;
+        transform: translate(0, 0) !important; /* 強制取消 JS 的偏移 */
+    }
+
+    .blob-red {
+        width: 350px; height: 350px;
+        top: 20%; left: 10%;
+        transform: translate(0, 0) !important;
+    }
+
+    .blob-green {
+        width: 300px; height: 300px;
+        top: 10%; right: -20%;
+        transform: translate(0, 0) !important;
+    }
+}
+
     </style>
 </head>
 
@@ -433,18 +465,21 @@
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
 
-        // 2. Mouse Parallax (背景滑鼠跟隨特效)
-        document.addEventListener('mousemove', (e) => {
-            const blobs = document.querySelectorAll('.blob');
-            
-            blobs.forEach(blob => {
-                const speed = blob.getAttribute('data-speed');
-                const xOffset = (window.innerWidth - e.clientX * speed) / 20;
-                const yOffset = (window.innerHeight - e.clientY * speed) / 20;
+  // 2. Mouse Parallax (只在電腦端/有滑鼠的裝置執行)
+document.addEventListener('mousemove', (e) => {
+    // 檢查螢幕寬度，如果大於 768px 才執行
+    if (window.innerWidth > 768) {
+        const blobs = document.querySelectorAll('.blob');
+        
+        blobs.forEach(blob => {
+            const speed = blob.getAttribute('data-speed');
+            const xOffset = (window.innerWidth - e.clientX * speed) / 20;
+            const yOffset = (window.innerHeight - e.clientY * speed) / 20;
 
-                blob.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
-            });
+            blob.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
         });
+    }
+});
 
         // 3. Rotating Cross (十字隨滾動旋轉)
         const cross = document.getElementById('rotating-cross');
