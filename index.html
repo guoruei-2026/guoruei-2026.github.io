@@ -157,31 +157,35 @@
         /* ... 原有的 CSS ... */
 
 /* ====================
-   📱 手機端固定效果 (RWD)
+   📱 手機端強化效果
    ==================== */
 @media (max-width: 767px) {
     .blob {
-        /* 手機端取消過渡動畫，避免與滾動衝突 */
         transition: none !important;
-        opacity: 0.5; /* 手機端稍微調淡，避免干擾閱讀 */
-        filter: blur(80px); /* 模糊度稍微調小 */
+        /* 💡 調整重點：提高不透明度，並稍微減少模糊度讓顏色更濃郁 */
+        opacity: 0.95; 
+        filter: blur(50px); 
     }
 
     .blob-yellow {
-        width: 300px; height: 300px;
-        top: 5%; left: -20%;
-        transform: translate(0, 0) !important; /* 強制取消 JS 的偏移 */
-    }
-
-    .blob-red {
-        width: 350px; height: 350px;
-        top: 20%; left: 10%;
+        width: 250px; height: 250px;
+        top: 5%; left: -15%;
+        background: #FFD700; /* 使用更鮮豔的金色 */
         transform: translate(0, 0) !important;
     }
 
-    .blob-green {
+    .blob-red {
         width: 300px; height: 300px;
-        top: 10%; right: -20%;
+        top: 15%; 
+        left: 50%;
+        transform: translate(-50%, 0) !important; /* 讓紅球精準置中在標題後方 */
+        background: #E52E2E; 
+    }
+
+    .blob-green {
+        width: 250px; height: 250px;
+        top: 8%; right: -15%;
+        background: #00FF41; /* 使用更亮麗的綠色 */
         transform: translate(0, 0) !important;
     }
 }
