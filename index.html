@@ -500,7 +500,7 @@
         </div>
     </footer>
 
-    <script>
+<script>
         // 1. Scroll Reveal (滾動出現特效)
         const revealElements = document.querySelectorAll('.reveal');
         
@@ -518,21 +518,20 @@
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
 
-  // 2. Mouse Parallax (只在電腦端/有滑鼠的裝置執行)
-document.addEventListener('mousemove', (e) => {
-    // 檢查螢幕寬度，如果大於 768px 才執行
-    if (window.innerWidth > 768) {
-        const blobs = document.querySelectorAll('.blob');
-        
-        blobs.forEach(blob => {
-            const speed = blob.getAttribute('data-speed');
-            const xOffset = (window.innerWidth - e.clientX * speed) / 20;
-            const yOffset = (window.innerHeight - e.clientY * speed) / 20;
+        // 2. Mouse Parallax (只在電腦端/有滑鼠的裝置執行)
+        document.addEventListener('mousemove', (e) => {
+            if (window.innerWidth > 768) {
+                const blobs = document.querySelectorAll('.blob');
+                
+                blobs.forEach(blob => {
+                    const speed = blob.getAttribute('data-speed');
+                    const xOffset = (window.innerWidth - e.clientX * speed) / 20;
+                    const yOffset = (window.innerHeight - e.clientY * speed) / 20;
 
-            blob.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+                    blob.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+                });
+            }
         });
-    }
-});
 
         // 3. Rotating Cross (十字隨滾動旋轉)
         const cross = document.getElementById('rotating-cross');
@@ -540,25 +539,7 @@ document.addEventListener('mousemove', (e) => {
             const scrollPos = window.scrollY;
             cross.style.transform = `rotate(${scrollPos * 0.2}deg)`;
         });
-        // 4. Navbar 滾動隱藏/顯示特效
-        const navbar = document.getElementById('navbar');
-        let lastScrollY = window.scrollY;
 
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            
-            // 當往下滑動，且滾動距離大於 50px 時（避免在頂部稍微摸到就觸發），向上收起導覽列
-            if (currentScrollY > lastScrollY && currentScrollY > 50) {
-                // 使用 Tailwind 的 -translate-y-full 類別將 Navbar 往上推離畫面
-                navbar.classList.add('-translate-y-full');
-            } else {
-                // 當往上滑動，或是回到頂部時，顯示導覽列
-                navbar.classList.remove('-translate-y-full');
-            }
-            
-            // 更新最後一次的滾動位置
-            lastScrollY = currentScrollY;
-        });
         // 4. Navbar 滾動與手機版漢堡選單整合邏輯
         const navbar = document.getElementById('navbar');
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -623,5 +604,6 @@ document.addEventListener('mousemove', (e) => {
             lastScrollY = currentScrollY;
         });
     </script>
+    
 </body>
 </html>
