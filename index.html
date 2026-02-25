@@ -242,29 +242,37 @@
         <div class="blob blob-green" data-speed="1.5"></div>
     </div>
 
-<nav class="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md border-b border-white/20 transition-all duration-300">
-        <div class="flex justify-between items-center py-4 px-6 md:px-12 max-w-5xl mx-auto">
-            
-            <a href="#" class="flex items-center gap-x-3 text-2xl font-bold serif tracking-wider hover:opacity-70 transition">
-                <img src="images/favicon.png" alt="Logo" class="h-8 w-auto">
-                <span class="text-black">Solution Lab</span>
-            </a>
+<nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md border-b border-white/20 transition-transform duration-300">
+    <div class="flex justify-between items-center py-4 px-6 md:px-12 max-w-5xl mx-auto">
+        
+        <a href="#" class="flex items-center gap-x-3 text-2xl font-bold serif tracking-wider hover:opacity-70 transition">
+            <img src="images/favicon.png" alt="Logo" class="h-8 w-auto">
+            <span class="text-black">Solution Lab</span>
+        </a>
 
-            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium text-black">
-                
-                <a href="#about" class="hover:opacity-60 transition">關於我</a>
-                
-                <span class="w-px h-3 bg-gray-700"></span>
-                
-                <a href="#research" class="hover:opacity-60 transition">學術研究</a>
-                
-                <span class="w-px h-3 bg-gray-700"></span>
-                
-                <a href="#projects" class="hover:opacity-60 transition">設計專案</a>
-                
-            </div>
+        <div class="hidden md:flex items-center gap-x-8 text-sm font-medium text-black">
+            <a href="#about" class="hover:opacity-60 transition">關於我</a>
+            <span class="w-px h-3 bg-gray-700"></span>
+            <a href="#research" class="hover:opacity-60 transition">學術研究</a>
+            <span class="w-px h-3 bg-gray-700"></span>
+            <a href="#projects" class="hover:opacity-60 transition">設計專案</a>
         </div>
-    </nav>
+
+        <button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center items-center gap-1.5 p-2 focus:outline-none">
+            <span class="w-6 h-[2px] bg-black transition-all duration-300"></span>
+            <span class="w-6 h-[2px] bg-black transition-all duration-300"></span>
+            <span class="w-6 h-[2px] bg-black transition-all duration-300"></span>
+        </button>
+    </div>
+
+    <div id="mobile-menu" class="absolute top-full left-0 w-full bg-white/90 backdrop-blur-lg border-b border-gray-200 overflow-hidden transition-all duration-300 max-h-0 opacity-0 md:hidden flex flex-col shadow-lg">
+        <div class="px-6 py-6 flex flex-col gap-8 text-center text-lg font-medium text-black">
+            <a href="#about" class="mobile-link hover:text-gray-500 transition">關於我</a>
+            <a href="#research" class="mobile-link hover:text-gray-500 transition">學術研究</a>
+            <a href="#projects" class="mobile-link hover:text-gray-500 transition">設計專案</a>
+        </div>
+    </div>
+</nav>
 
     <header class="relative z-10 text-center pt-20 pb-32 px-4 min-h-[80vh] flex flex-col justify-center">
         
@@ -531,6 +539,88 @@ document.addEventListener('mousemove', (e) => {
         window.addEventListener('scroll', () => {
             const scrollPos = window.scrollY;
             cross.style.transform = `rotate(${scrollPos * 0.2}deg)`;
+        });
+        // 4. Navbar 滾動隱藏/顯示特效
+        const navbar = document.getElementById('navbar');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            // 當往下滑動，且滾動距離大於 50px 時（避免在頂部稍微摸到就觸發），向上收起導覽列
+            if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                // 使用 Tailwind 的 -translate-y-full 類別將 Navbar 往上推離畫面
+                navbar.classList.add('-translate-y-full');
+            } else {
+                // 當往上滑動，或是回到頂部時，顯示導覽列
+                navbar.classList.remove('-translate-y-full');
+            }
+            
+            // 更新最後一次的滾動位置
+            lastScrollY = currentScrollY;
+        });
+        // 4. Navbar 滾動與手機版漢堡選單整合邏輯
+        const navbar = document.getElementById('navbar');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const spans = mobileMenuBtn.querySelectorAll('span');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        let lastScrollY = window.scrollY;
+        let isMenuOpen = false;
+
+        // 處理選單開關與漢堡動畫
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                // 打開選單：移除隱藏 class，加入顯示 class
+                mobileMenu.classList.remove('max-h-0', 'opacity-0');
+                mobileMenu.classList.add('max-h-[400px]', 'opacity-100');
+                
+                // 漢堡變叉叉 (X) 動畫
+                spans[0].classList.add('translate-y-[8px]', 'rotate-45');
+                spans[1].classList.add('opacity-0');
+                spans[2].classList.add('-translate-y-[8px]', '-rotate-45');
+            } else {
+                // 關閉選單
+                mobileMenu.classList.add('max-h-0', 'opacity-0');
+                mobileMenu.classList.remove('max-h-[400px]', 'opacity-100');
+                
+                // 叉叉恢復成漢堡
+                spans[0].classList.remove('translate-y-[8px]', 'rotate-45');
+                spans[1].classList.remove('opacity-0');
+                spans[2].classList.remove('-translate-y-[8px]', '-rotate-45');
+            }
+        }
+
+        // 點擊漢堡按鈕觸發
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+
+        // 點擊選單內的連結後，自動收起選單 (UX 細節)
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) toggleMenu();
+            });
+        });
+
+        // 滾動偵測：上滑顯示、下滑隱藏
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            // 如果選單開著的時候使用者往下滾，自動把選單關起來
+            if (isMenuOpen && Math.abs(currentScrollY - lastScrollY) > 10) {
+                toggleMenu();
+            }
+
+            // 往下滾動且大於 50px 時，隱藏 Navbar
+            if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                navbar.classList.add('-translate-y-full');
+            } else {
+                // 往上滾動，顯示 Navbar
+                navbar.classList.remove('-translate-y-full');
+            }
+            
+            lastScrollY = currentScrollY;
         });
     </script>
 </body>
