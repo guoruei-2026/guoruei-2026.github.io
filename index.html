@@ -141,18 +141,22 @@
             margin: 0 auto;
         }
 
-        /* 3. Tooltip 樣式 */
-        .tooltip-box {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-        }
-        .group:hover .tooltip-box {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
+/* 3. Tooltip 樣式 */
+.tooltip-box {
+    opacity: 0;
+    visibility: hidden;
+    /* 讓它維持水平置中，並稍微往下沉 10px 準備浮現 */
+    transform: translate(-50%, 10px);
+    transition: all 0.3s ease;
+    pointer-events: none; /* 避免擋住滑鼠 */
+}
+
+.group:hover .tooltip-box {
+    opacity: 1;
+    visibility: visible;
+    /* 浮現到準確的 Y 軸位置 */
+    transform: translate(-50%, 0);
+}
 
         /* ... 原有的 CSS ... */
 
@@ -274,8 +278,7 @@
     </div>
 </nav>
 
-    <header class="relative z-10 text-center pt-20 pb-32 px-4 min-h-[80vh] flex flex-col justify-center">
-        
+<header class="relative z-20 text-center pt-20 pb-32 px-4 min-h-[80vh] flex flex-col justify-center">        
         <div class="mb-8 flex justify-center">
             <div class="plus-effect">
                 <span id="rotating-cross" class="cross-icon text-white text-5xl font-light inline-block">+</span> 
@@ -294,30 +297,32 @@
             </p>
         </div>
 
-        <div class="reveal flex justify-center gap-8 md:gap-16 text-xs font-bold tracking-widest uppercase w-full max-w-4xl mx-auto pt-16" style="transition-delay: 0.2s;">
+<div class="reveal relative flex justify-center gap-8 md:gap-16 text-xs font-bold tracking-widest uppercase w-full max-w-4xl mx-auto pt-16 pb-16" style="transition-delay: 0.2s;">
             
-            <div class="group relative cursor-pointer flex flex-col items-center">
-                <span class="border-b border-black pb-1 hover:text-red-600 transition">Integrated Design</span>
-                <div class="tooltip-box absolute top-full mt-4 w-60 bg-black/80 backdrop-blur text-white text-[13px] font-normal p-4 rounded leading-relaxed normal-case">
-                    整合視覺、產品與體驗設計，提供全方位方案。
-                </div>
-            </div>
-
-            <div class="group relative cursor-pointer flex flex-col items-center">
-                <span class="border-b border-black pb-1 hover:text-yellow-600 transition">User Research</span>
-                <div class="tooltip-box absolute top-full mt-4 w-60 bg-black/80 backdrop-blur text-white text-[13px] font-normal p-4 rounded leading-relaxed normal-case">
-                    混合研究分析，挖掘使用者深層的潛在需求。
-                </div>
-            </div>
-
-            <div class="group relative cursor-pointer flex flex-col items-center">
-                <span class="border-b border-black pb-1 hover:text-green-600 transition">AI Co-creation</span>
-                <div class="tooltip-box absolute top-full mt-4 w-60 bg-black/80 backdrop-blur text-white text-[13px] font-normal p-4 rounded leading-relaxed normal-case">
-                    運用 AI 工具協作，加速創意發想與推動的效率。
-                </div>
-            </div>
-
+<div class="reveal relative flex justify-center gap-8 md:gap-16 text-xs font-bold tracking-widest uppercase w-full max-w-4xl mx-auto pt-16 pb-16" style="transition-delay: 0.2s;">
+            
+    <div class="group cursor-pointer flex flex-col items-center">
+        <span class="border-b border-black pb-1 hover:text-red-600 transition">Integrated Design</span>
+        <div class="tooltip-box absolute -bottom-10 left-1/2 z-[100] w-72 bg-black/80 backdrop-blur text-white text-[14px] text-center p-4 rounded-lg leading-relaxed normal-case shadow-lg">
+            整合視覺、產品與體驗設計，提供全方位方案。
         </div>
+    </div>
+
+    <div class="group cursor-pointer flex flex-col items-center">
+        <span class="border-b border-black pb-1 hover:text-yellow-600 transition">User Research</span>
+        <div class="tooltip-box absolute -bottom-10 left-1/2 z-[100] w-72 bg-black/80 backdrop-blur text-white text-[14px] text-center p-4 rounded-lg leading-relaxed normal-case shadow-lg">
+            混合研究分析，挖掘使用者深層的潛在需求。
+        </div>
+    </div>
+
+    <div class="group cursor-pointer flex flex-col items-center">
+        <span class="border-b border-black pb-1 hover:text-green-600 transition">AI Co-creation</span>
+        <div class="tooltip-box absolute -bottom-10 left-1/2 z-[100] w-72 bg-black/80 backdrop-blur text-white text-[14px] text-center p-4 rounded-lg leading-relaxed normal-case shadow-lg">
+            運用 AI 工具協作，加速創意發想與推動的效率。
+        </div>
+    </div>
+
+</div>
     </header>
 
 <section id="about" class="max-w-6xl mx-auto px-6 py-24 relative z-10 scroll-mt-28">
@@ -367,14 +372,14 @@
                 </div>
             </div>
 
-            <div class="flex flex-wrap gap-4 mt-12 pl-12 reveal" style="transition-delay: 0.4s;">
-           <span class="text-white bg-gray-700 px-4 py-1 rounded-full text-xs font-bold shadow hover:bg-gray-500 transition duration-300 cursor-default">
+            <div class="flex flex-wrap gap-2 mt-12 pl-10 reveal" style="transition-delay: 0.4s;">
+           <span class="text-white bg-gray-800 px-4 py-1 rounded-full text-xs font-bold shadow hover:bg-gray-500 transition duration-300 cursor-default">
     UI/UX
 </span>
-<span class=" text-white bg-gray-700 px-4 py-1 rounded-full text-xs font-bold shadow hover:bg-gray-500 transition duration-300 cursor-default">
+<span class=" text-white bg-gray-800 px-4 py-1 rounded-full text-xs font-bold shadow hover:bg-gray-500 transition duration-300 cursor-default">
     Marketing Design
 </span>
-<span class="text-white bg-gray-700 px-4 py-1 rounded-full text-xs font-bold shadow hover:bg-gray-500 transition duration-300 cursor-default">
+<span class="text-white bg-gray-800 px-4 py-1 rounded-full text-xs font-bold shadow hover:bg-gray-500 transition duration-300 cursor-default">
     Design Project management
 </span>
             </div>
@@ -387,8 +392,8 @@
     
     <h2 class="text-center text-3xl font-bold serif mb-16 reveal">Academic Research</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-16 max-w-4xl mx-auto">
-        <div class="aspect-video relative reveal group overflow-hidden border border-gray-200 rounded-lg max-w-[350px] mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-16 max-w-4xl mx-auto">
+        <div class="aspect-video relative reveal group overflow-hidden rounded-lg max-w-[350px] mx-auto">
             <img 
                 src="images/HCI2025.PNG" 
                 alt="Research Visualization 01" 
@@ -397,7 +402,7 @@
             <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
         </div>
 
-        <div class="aspect-video relative reveal group overflow-hidden border border-gray-200 rounded-lg max-w-[400px] mx-auto" style="transition-delay: 0.1s;">
+        <div class="aspect-video relative reveal group overflow-hidden  rounded-lg max-w-[350px] mx-auto" style="transition-delay: 0.1s;">
             <img 
                 src="images/HCI2024.PNG" 
                 alt="Research Visualization 02" 
